@@ -1,1 +1,9 @@
-<p>homepage works!</p>
+<p>Welcome to Shiny Tracker!</p>
+
+<div class="new-tracker-button" (click)="onClickNewTracker()">
+    <button mat-raised-button color="primary" [innerHTML]="newTrackerHTML"></button>
+</div>
+
+<div class="new-tracker-display" *ngIf="displayTracker">
+    <p> Button to display tracker works! </p>
+</div>
