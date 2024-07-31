@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet, RouterModule } from '@angular/router';
 import { ApiService } from './api.service';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HuntInstanceComponent } from './hunt-instance/hunt-instance.component';
@@ -8,7 +8,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive,
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, RouterModule,
             HomepageComponent, HuntInstanceComponent, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
