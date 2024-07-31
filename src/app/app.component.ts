@@ -25,7 +25,7 @@ export class AppComponent {
 
     this.matIconRegistry.addSvgIcon(
       'pokeball',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg'))}
+      this.domSanitizer.bypassSecurityTrustResourceUrl('https://raw.githubusercontent.com/TedmanNguyen/soseproject/main/src/assets/pokeball.svg'))}
 
   ngOnInit() {
     this.apiService.getData('pokemon/ditto').subscribe((data) => {
