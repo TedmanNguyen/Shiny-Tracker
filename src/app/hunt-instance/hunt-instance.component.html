@@ -3,19 +3,20 @@
     <div class="selector-group">
       <p class="choose-game">Choose a generation:</p>
       <select class="selector">
-        <option value="" selected>Option 1</option>
-        <!-- Add options here -->
+        <option *ngFor="let generation of gameGenerations" [value]="generation">
+          {{ generation }}
+        </option>
       </select>
     </div>
     <div class="selector-group">
-      <p class="choose-game">Choose a pokemon:</p>
+      <p class="choose-game">Choose a method:</p>
       <select class="selector">
         <option value="" selected>Option 1</option>
         <!-- Add options here -->
       </select>
     </div>
     <div class="selector-group">
-      <p class="choose-game">Choose a method:</p>
+      <p class="choose-game">Choose a pokemon:</p>
       <select class="selector">
         <option value="" selected>Option 1</option>
         <!-- Add options here -->

@@ -36,37 +36,37 @@
 /* Add media queries for mobile responsiveness */
 @media (max-width: 1024px) {
   .hunt-wrapper .hunt-container {
-    width: 70%; /* Adjust width for iPad Air and similar screens */
-    padding: 20px; /* Adjust padding for smaller screens */
+    width: 50%; /* Adjust width for iPad Air and similar screens */
+    padding: 50px 0 0 35px;
   }
 
   .selector {
-    width: 100%; /* Make selectors take full width */
-    padding: 10px; /* Adjust padding for smaller screens */
+    width: 50%; /* Make selectors take full width */
+    padding: 50px 0 0 35px;
   }
 }
 
 @media (max-width: 768px) {
   .hunt-wrapper .hunt-container {
-    width: 90%; /* Adjust width for smaller screens */
-    padding: 20px; /* Adjust padding for smaller screens */
+    width: 50%; /* Adjust width for smaller screens */
+    padding: 50px 0 0 35px;
   }
 
   .selector {
-    width: 100%; /* Make selectors take full width */
-    padding: 10px; /* Adjust padding for smaller screens */
+    width: 50%; /* Make selectors take full width */
+    padding: 50px 0 0 35px;
   }
 }
 
 @media (max-width: 480px) {
   .hunt-wrapper .hunt-container {
-    width: 100%; /* Adjust width for very small screens */
-    padding: 15px; /* Adjust padding for very small screens */
+    width: 50%; /* Adjust width for very small screens */
+    padding: 50px 0 0 35px;
   }
 
   .selector {
-    width: 100%; /* Make selectors take full width */
-    padding: 8px; /* Adjust padding for very small screens */
+    width: 50%; /* Make selectors take full width */
+    padding: 50px 0 0 35px;
   }
 }
 
