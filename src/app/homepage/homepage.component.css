@@ -1,0 +1,42 @@
+.title-screen {
+  margin: 60px 60px;
+}
+
+.welcome-text {
+  font-weight: bold;
+  margin: 0;
+  font-size: 80px;
+}
+
+.title-screen p {
+  margin: 30px 0;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.start-button {
+  color: white;
+  background-color: #ff3030;
+  border: 4px solid black;
+  border-radius: 25px;
+  padding: 10px 50px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.start-button:hover {
+  background-color: #ff5050; /* Change background color on hover */
+  transform: scale(1.05); /* Slightly increase the scale on hover */
+  box-shadow: 0 5px #666; /* Add shadow effect */
+  transform: translateY(4px); /* Move the button down on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition effect */
+  cursor: pointer;
+}
+
+.start-button:active {
+  background-color: #ff5050; /* Change background color on active */
+  transform: translateY(-8px);
+  box-shadow: 0 5px #666; /* Add shadow effect */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition effect */
+  cursor: pointer;
+}
