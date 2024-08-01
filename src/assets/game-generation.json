@@ -1,0 +1,44 @@
+{
+    "gold-silver": {
+        "generation": "generation-ii"
+    },
+    "crystal": {
+        "generation": "generation-ii"
+    },
+    "ruby-sapphire": {
+        "generation": "generation-iii"
+    },
+    "emerald": {
+        "generation": "generation-iii"
+    },
+    "firered-leafgreen": {
+        "generation": "generation-iii"
+    },
+    "diamond-pearl": {
+        "generation": "generation-iv"
+    },
+    "platinum": {
+        "generation": "generation-iv"
+    },
+    "heartgold-soulsilver": {
+        "generation": "generation-iv"
+    },
+    "black-white": {
+        "generation": "generation-v"
+    },
+    "black-2-white-2": {
+        "generation": "generation-v"
+    },
+    "x-y": {
+        "generation": "generation-vi"
+    },
+    "omega-ruby-alpha-sapphire": {
+        "generation": "generation-vi"
+    },
+    "sun-moon": {
+        "generation": "generation-vii"
+    },
+    "ultra-sun-ultra-moon": {
+        "generation": "generation-vii"
+    }
+}
