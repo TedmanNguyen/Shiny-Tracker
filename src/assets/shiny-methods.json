@@ -21,9 +21,11 @@
         "base-rate": "1/4096",
         "masuda-method": "6/4096",
         "poke-radar": "gen-vi-radar",
+        "chain-fishing": "chain-fishing",
         "base-rate-charm": "1/512",
         "masuda-method-charm": "8/4096",
-        "poke-radar-charm": "gen-vi-radar-charm"
+        "poke-radar-charm": "gen-vi-radar-charm",
+        "chain-fishing-charm": "chain-fishing-charm"
     },
     "generation-vii": {
         "base-rate": "1/4096",

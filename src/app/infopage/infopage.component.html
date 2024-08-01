@@ -1,32 +1,129 @@
 <h1> Shiny Pokemon </h1>
 <p>
-    Shiny Pokemon are a special variant of a Pokemon. Compared to the regular/typical variant,
-    shiny Pokemon have a different color scheme and may play a "shining" animation at the start
-    of a battle. Shiny Pokemon have identical stats as their regular counterparts, so the only
-    differences between them are cosmetic.
+    Shiny Pokemon are a special variant of a Pokemon. Compared to the
+    regular/typical variant, shiny Pokemon have a different color scheme and
+    may play a "shining" animation at the start of a battle. These Pokemon 
+    have identical stats as their regular counterparts, so the only
+    differences between them are cosmetic. Shiny Pokemon were Introduced in 
+    Generation II.
 </p>
 <p>
-    The odds of encountering a shiny Pokemon during normal gameplay is extremely low,
-    with a probability of 1/8196 (for generations II-V) or 1/4096 (for generations VI onward). 
-    So, obtaining a shiny Pokemon is considered as an achievement for Pokemon players.
+    The odds of encountering a shiny Pokemon during normal gameplay is extremely
+    low, with a probability of 1/8196 (for generations II-V) or 1/4096 (for
+    generations VI onward). So, obtaining a shiny Pokemon is considered as an
+    achievement by many Pokemon players.
 </p>
+
+<!-- Pictures showing the difference between shiny and normal -->
 
 <h1> What is Shiny Hunting? </h1>
 <p>
-    Shiny hunting is when a player uses a special method that increases the chances of encountering
-    a shiny Pokemon. Different methods exist in each Pokemon generation, with some methods reappearing
-    throughout the series. Additionally, the rates for encountering a shiny Pokemon may differ between
+    Shiny hunting is when a player uses a special method that increases the
+    chances of encountering a shiny Pokemon. Different methods exist in each
+    Pokemon generation, with some methods reappearing throughout the series. 
+    Additionally, the rates for encountering a shiny Pokemon may differ between
     generations despite using the same method.
 </p>
 
-<!-- card with hunting methods (no charm) -->
+<!-- card with hunting methods -->
+
+<mat-card>
+    <mat-card-title> Shiny Hunting Methods </mat-card-title>
+    <mat-card-content>
+        <mat-tab-group dynamicHeight="dynamicHeight">
+            <mat-tab label="Breed with Shiny"> 
+                <p> <em> Applicable in: Generation II </em> </p>
+                <p>
+                    In Generation II, what makes a Pokemon shiny is determined by
+                    something called their Individual Values (IVs). Since IVs 
+                    can be inherited from parent Pokemon, breeding one shiny
+                    Pokemon with another Pokemon increases the chances of obtaining
+                    a shiny Pokemon from 1/8196 to 1/64. So, the best (and only) way
+                    to increase the odds of getting a shiny Pokemon in Generation II
+                    is to breed a shiny Pokemon with another Pokemon.
+                </p>
+            </mat-tab>
+            <mat-tab label="Masuda Method">
+                <p> <em> Applicable in: Generation IV onward </em> </p>
+                <p>
+                    The Masuda Method is one of the most iconic shiny hunting methods 
+                    in the Pokemon franchise. If two Pokemon from different game
+                    languages are bred, the chances of hatching a shiny Pokemon increases.
+                    This method was originally created to promote players trading their
+                    Pokemon with other players online.
+                </p>
+            </mat-tab>
+            <mat-tab label="Poke Radar">
+                <p> <em> Applicable in: Generation IV, VI, and VIII* </em> </p>
+                <p>
+                    The Poke Radar is used to find Pokemon hiding in tall grass.
+                    If a player "chains" the number of successful encounters they
+                    get while using the Poke Radar, their chances of encountering
+                    a shiny Pokemon increases. This rate increase stops after 40
+                    or more chained encounters.
+                </p>
+                <p>
+                    In Omega Ruby and Alpha Sapphire, the DexNav is used instead of
+                    the Poke Radar. Chaining Pokemon with the DexNav does increase the 
+                    rates for shiny Pokemon, but the exact mechanics and probability are 
+                    unknown. Therefore, Shiny Tracker does not have DexNav as a method 
+                    to choose from when creating a tracker.
+                </p>
+                <small>
+                    *Although Poke Radar exists in Generation VIII, Shiny Tracker only
+                    supports games between Generations II and VII.
+                </small>
+            </mat-tab>
+            <mat-tab label="Chain Fishing">
+                <p> <em> Applicable in: Generation VI </em> </p>
+                <p>
+                    The concept of chaining also exists in fishing for Generation
+                    VI games. Successfully reeling in Pokemon consecutively increases
+                    the probability of encountering a shiny Pokemon. This rate increase
+                    stops after 20 or more chained encounters.
+                </p>
+            </mat-tab>
+            <mat-tab label="SOS Battle">
+                <p> <em> Applicable in: Generation VII </em> </p>
+                <p>
+                    SOS Battles are when a wild Pokemon calls for help from another
+                    Pokemon. If successful, the ally Pokemon will appear in battle
+                    alongside the original wild Pokemon. Defeating the ally Pokemon
+                    and stalling the encounter causes subsequent ally Pokemon to have
+                    a higher chance of being shiny. This rate increase stops after 31
+                    or more chained encounters.
+                </p>
+            </mat-tab>
+            <mat-tab label="Soft Reset">
+                <p> <em> Applicable in: Generation II onward </em> </p>
+                <p>
+                    Also known as shiny resetting, soft resetting is when a player
+                    resets the game without saving. Although this method does not
+                    increase the rates for a shiny Pokemon, it is used to obtain a 
+                    shiny variant of a Pokemon encountered in a scripted event.
+                    This is because the Pokemon's stats are determined upon encountering
+                    the Pokemon, so exiting the game and re-encountering it gives the 
+                    player another chance to encounter the scripted Pokemon as a shiny.
+                </p>
+                <p>
+                    This method exists for all games that have shiny Pokemon. Because
+                    the rates of encountering a shiny don't increase with this method,
+                    it is only used in specific situations (ex. getting a Legendary
+                    Pokemon as a shiny).
+                </p>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>
 
 <h1> Shiny Charm </h1>
 <p>
-    Introduced in Pokemon Black 2 and White 2, the Shiny Charm is a key item that increases the chances
-    of obtaining a shiny Pokemon by a flat rate. It is obtained by completing the National Pokedex in 
-    the respective game, which requires capturing almost every Pokemon within that game. Since the 
-    Shiny Charm provides a flat rate increase, its effect combines with other shiny hunting methods.
+    Introduced in Pokemon Black 2 and White 2, the Shiny Charm is a key item that
+    increases the chances of obtaining a shiny Pokemon by a flat rate. 
+    It is obtained by completing the National Pokedex in the respective game,
+    which requires capturing almost every Pokemon within that game. Since the 
+    Shiny Charm provides a flat rate increase, its effect combines with other 
+    shiny hunting methods.
 </p>
 
-<!-- card with hunting methods (and with charm) -->
+<!-- card with hunting method rates (with or without charm) -->
