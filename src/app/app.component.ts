@@ -18,6 +18,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 
 export class AppComponent {
   title = 'soseproject';
+  gameName : string = '';
 
   constructor(private apiService: ApiService,
               private matIconRegistry: MatIconRegistry,
@@ -27,9 +28,19 @@ export class AppComponent {
       'pokeball',
       this.domSanitizer.bypassSecurityTrustResourceUrl('https://raw.githubusercontent.com/TedmanNguyen/soseproject/main/src/assets/pokeball.svg'))}
 
+  /*
   ngOnInit() {
     this.apiService.getData('pokemon/ditto').subscribe((data) => {
       console.log(data);
     });
+  */
+  /*
+   ngOnInit() {
+    this.apiService.getGame(3).subscribe((data) => {
+      this.gameName = data.results[3].name;
+      
+      console.log(this.gameName);
+    });
   }
+  */ 
 }
