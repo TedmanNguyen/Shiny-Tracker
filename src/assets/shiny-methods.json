@@ -1,0 +1,36 @@
+{
+    "generation-ii": {
+        "base-rate": "1/8192",
+        "breed-with-shiny": "1/64"
+    },
+    "generation-iii": {
+        "base-rate": "1/8192"
+    },
+    "generation-iv": {
+        "base-rate": "1/8192",
+        "masuda-method": "5/8192",
+        "poke-radar": "gen-iv-radar"
+    },
+    "generation-v": {
+        "base-rate": "1/8192",
+        "masuda-method": "6/8192",
+        "base-rate-charm": "1/2048",
+        "masuda-method-charm": "8/8192"
+    },
+    "generation-vi": {
+        "base-rate": "1/4096",
+        "masuda-method": "6/4096",
+        "poke-radar": "gen-vi-radar",
+        "base-rate-charm": "1/512",
+        "masuda-method-charm": "8/4096",
+        "poke-radar-charm": "gen-vi-radar-charm"
+    },
+    "generation-vii": {
+        "base-rate": "1/4096",
+        "masuda-method": "6/4096",
+        "sos-battle": "sos-battle",
+        "base-rate-charm": "1/512",
+        "masuda-method-charm": "8/4096",
+        "sos-battle-charm": "sos-battle-charm"
+    }
+}

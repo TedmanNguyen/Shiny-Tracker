@@ -1,4 +1,4 @@
-// File handles the main body of the app homepage.
+// File handles the main body of the app homepage/tracker page.
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
