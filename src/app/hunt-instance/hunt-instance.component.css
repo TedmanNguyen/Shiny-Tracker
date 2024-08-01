@@ -4,6 +4,16 @@
   align-items: center;
   margin: 0;
   height: 80vh; /* Use 100vh to ensure it takes the full viewport height */
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .hunt-wrapper .hunt-container {
@@ -14,16 +24,67 @@
   padding: 10px;
   width: 25%;
   height: 50%;
+  min-height: 300px; /* Ensure a minimum height */
   box-shadow: 50px 50px 12.7px #00000025;
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 50px 0 0 35px;
+  overflow: hidden; /* Hide overflow content */
+}
+
+/* Add media queries for mobile responsiveness */
+@media (max-width: 1024px) {
+  .hunt-wrapper .hunt-container {
+    width: 70%; /* Adjust width for iPad Air and similar screens */
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .selector {
+    width: 100%; /* Make selectors take full width */
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .hunt-wrapper .hunt-container {
+    width: 90%; /* Adjust width for smaller screens */
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .selector {
+    width: 100%; /* Make selectors take full width */
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .hunt-wrapper .hunt-container {
+    width: 100%; /* Adjust width for very small screens */
+    padding: 15px; /* Adjust padding for very small screens */
+  }
+
+  .selector {
+    width: 100%; /* Make selectors take full width */
+    padding: 8px; /* Adjust padding for very small screens */
+  }
 }
 
 .selector-group {
   display: flex;
   flex-direction: column;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .choose-game {
