@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './hunt-instance.component.html',
-  styleUrl: './hunt-instance.component.css'
+  styleUrls: ['./hunt-instance.component.css'],
 })
-export class HuntInstanceComponent {
-
-}
+export class HuntInstanceComponent {}

@@ -1,0 +1,43 @@
+.hunt-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 80vh; /* Use 100vh to ensure it takes the full viewport height */
+}
+
+.hunt-wrapper .hunt-container {
+  background-color: #d9d9d9 !important;
+  background-image: none !important;
+  position: relative;
+  border-radius: 50px;
+  padding: 10px;
+  width: 25%;
+  height: 50%;
+  box-shadow: 50px 50px 12.7px #00000025;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 50px 0 0 35px;
+}
+
+.selector-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.choose-game {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.selector {
+  border-radius: 15px;
+  color: black;
+  background-color: white;
+  padding: 10px 50px 10px 30px;
+  font-weight: bold;
+  font-size: 18px;
+  position: relative;
+  width: 250px;
+}

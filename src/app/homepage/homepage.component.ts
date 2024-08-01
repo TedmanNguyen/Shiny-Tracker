@@ -2,6 +2,7 @@
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './homepage.component.css',
 })
 export class HomepageComponent {
+  constructor(private router: Router) {}
   displayTracker: boolean = false;
   newTrackerHTML: string = 'New Tracker';
 
@@ -19,5 +21,9 @@ export class HomepageComponent {
     // of the new tracker button.
     this.displayTracker = !this.displayTracker;
     this.newTrackerHTML = this.displayTracker ? 'Cancel' : 'New Tracker';
+  }
+
+  navigateToHuntPage() {
+    this.router.navigate(['/hunt-page']);
   }
 }
