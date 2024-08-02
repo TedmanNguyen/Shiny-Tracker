@@ -35,6 +35,7 @@ export class HuntInstanceComponent implements OnInit {
     method: { name: '', rate: '', encounters: 0 },
     found: false,
   };
+  
 
   constructor(
     private gameGenerationService: GameGenerationService,
