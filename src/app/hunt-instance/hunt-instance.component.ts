@@ -1,11 +1,7 @@
-<<<<<<<<< Temporary merge branch 1
-import { Component } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
-=========
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameGenerationService } from '../game-generation.service';
->>>>>>>>> Temporary merge branch 2
+import { CookieService } from 'ngx-cookie-service';
 
 interface Pokemon {
   name: string;
@@ -30,14 +26,14 @@ interface HuntInstance {
   templateUrl: './hunt-instance.component.html',
   styleUrls: ['./hunt-instance.component.css'],
 })
-export class HuntInstanceComponent {
-<<<<<<<<< Temporary merge branch 1
+export class HuntInstanceComponent implements OnInit {
+  gameGenerations: string[] = [];
   huntInstances: HuntInstance[] = [];
-  newHuntInstance: HuntInstance = { 
-    generation: '', 
-    pokemon: { name: '', spriteUrl: '' }, 
+  newHuntInstance: HuntInstance = {
+    generation: '',
+    pokemon: { name: '', spriteUrl: '' },
     method: { name: '', rate: '', encounters: 0 },
-    found: false 
+    found: false,
   };
 
   constructor(
@@ -58,11 +54,11 @@ export class HuntInstanceComponent {
     // Saves to cookies
     this.saveHuntInstances();
     // Resets the hunt instance object to empty strings
-    this.newHuntInstance = { 
-      generation: '', 
-      pokemon: { name: '', spriteUrl: '' }, 
+    this.newHuntInstance = {
+      generation: '',
+      pokemon: { name: '', spriteUrl: '' },
       method: { name: '', rate: '', encounters: 0 },
-      found: false 
+      found: false,
     };
   }
 
@@ -76,20 +72,4 @@ export class HuntInstanceComponent {
       this.huntInstances = JSON.parse(storedHuntInstances);
     }
   }
-
-
-
-
-
-=========
-  gameGenerations: string[] = [];
-
-  constructor(private gameGenerationService: GameGenerationService) {}
-
-  ngOnInit(): void {
-    this.gameGenerationService.getGameGenerations().subscribe((data) => {
-      this.gameGenerations = Object.keys(data);
-    });
-  }
->>>>>>>>> Temporary merge branch 2
 }
