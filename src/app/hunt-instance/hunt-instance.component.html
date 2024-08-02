@@ -2,7 +2,8 @@
   <div class="hunt-container">
     <div class="selector-group">
       <p class="choose-game">Choose a generation:</p>
-      <select class="selector">
+      <select class="selector" (change)="onGenerationChange($event)">
+        <option value=""> --- </option>
         <option *ngFor="let generation of gameGenerations" [value]="generation">
           {{ generation }}
         </option>
@@ -10,7 +11,8 @@
     </div>
     <div class="selector-group">
       <p class="choose-game">Choose a method:</p>
-      <select class="selector">
+      <select class="selector" (change)="onMethodChange($event)">
+        <option value=""> --- </option>
         <option *ngFor="let generation of gameGenerations" [value]="generation">
           {{ generation }}
         </option>
@@ -18,7 +20,8 @@
     </div>
     <div class="selector-group">
       <p class="choose-game">Choose a pokemon:</p>
-      <select class="selector">
+      <select class="selector" (change)="onPokemonChange($event)">
+        <option value=""> --- </option>
         <option *ngFor="let generation of gameGenerations" [value]="generation">
           {{ generation }}
         </option>

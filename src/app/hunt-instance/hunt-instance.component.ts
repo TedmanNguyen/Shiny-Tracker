@@ -26,6 +26,55 @@ interface HuntInstance {
   templateUrl: './hunt-instance.component.html',
   styleUrls: ['./hunt-instance.component.css'],
 })
+export class HuntInstanceComponent {
+  gameGenerations: string[] = [];
+  generation: string = '';
+  method: string = '';
+  pokemon: string = '';
+
+  constructor(
+    private gameGenerationService: GameGenerationService,
+    private cookieService: CookieService
+  ) {}
+
+  ngOnInit(): void {
+    this.gameGenerationService.getGameGenerations().subscribe((data) => {
+      this.gameGenerations = Object.keys(data);
+    });
+  }
+
+  onGenerationChange(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    console.log(this.generation);
+    this.generation = target.value;
+    console.log(this.generation);
+
+    if (this.generation) {
+      this.gameGenerationService.getGameGeneration(this.generation).subscribe((data) => {
+        console.log(data);
+      });
+    }
+  }
+
+  onMethodChange(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    console.log(this.method);
+    this.method = target.value;
+    console.log(this.method);
+  }
+
+  onPokemonChange(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    console.log(this.pokemon);
+    this.pokemon = target.value;
+    console.log(this.pokemon);
+  }
+};
+
+
+  
+
+  /*
 export class HuntInstanceComponent implements OnInit {
   gameGenerations: string[] = [];
   huntInstances: HuntInstance[] = [];
@@ -73,4 +122,5 @@ export class HuntInstanceComponent implements OnInit {
       this.huntInstances = JSON.parse(storedHuntInstances);
     }
   }
-}
+
+  */
