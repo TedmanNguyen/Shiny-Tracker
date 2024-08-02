@@ -27,7 +27,8 @@ interface HuntInstance {
   styleUrls: ['./hunt-instance.component.css'],
 })
 export class HuntInstanceComponent {
-  gameGenerations: string[] = [];
+  gameList: string[] = [];
+  game: string = '';
   generation: string = '';
   method: string = '';
   pokemon: string = '';
@@ -39,19 +40,16 @@ export class HuntInstanceComponent {
 
   ngOnInit(): void {
     this.gameGenerationService.getGameGenerations().subscribe((data) => {
-      this.gameGenerations = Object.keys(data);
+      this.gameList = Object.keys(data);
     });
   }
 
-  onGenerationChange(event: Event): void {
+  onGameChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
-    console.log(this.generation);
-    this.generation = target.value;
-    console.log(this.generation);
-
-    if (this.generation) {
-      this.gameGenerationService.getGameGeneration(this.generation).subscribe((data) => {
-        console.log(data);
+    this.game = target.value;
+    if (this.game) {
+      this.gameGenerationService.getGameGenerations().subscribe((data) => {
+        this.generation = data[this.game];
       });
     }
   }
