@@ -1,26 +1,29 @@
 <div class="hunt-wrapper">
   <div class="hunt-container">
     <div class="selector-group">
-      <p class="choose-game">Choose a generation:</p>
-      <select class="selector">
-        <option *ngFor="let generation of gameGenerations" [value]="generation">
-          {{ generation }}
+      <p class="choose-game">Choose a game:</p>
+      <select class="selector" (change)="onGameChange($event)">
+        <option value=""> --- </option>
+        <option *ngFor="let game of gameList" [value]="game">
+          {{ game }}
         </option>
       </select>
     </div>
     <div class="selector-group">
       <p class="choose-game">Choose a method:</p>
-      <select class="selector">
-        <option *ngFor="let generation of gameGenerations" [value]="generation">
-          {{ generation }}
+      <select class="selector"  [disabled]="!generation" (change)="onMethodChange($event)">
+        <option value=""> --- </option>
+        <option *ngFor="let method of methodList" [value]="method">
+          {{ method }}
         </option>
       </select>
     </div>
     <div class="selector-group">
       <p class="choose-game">Choose a pokemon:</p>
-      <select class="selector">
-        <option *ngFor="let generation of gameGenerations" [value]="generation">
-          {{ generation }}
+      <select class="selector" (change)="onPokemonChange($event)">
+        <option value=""> --- </option>
+        <option *ngFor="let game of gameList" [value]="game">
+          {{ game }}
         </option>
       </select>
     </div>
