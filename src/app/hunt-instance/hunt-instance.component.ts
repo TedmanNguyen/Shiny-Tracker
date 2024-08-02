@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameGenerationService } from '../game-generation.service';
+import { GenerationMethodsService } from '../generation-methods.service';
 import { CookieService } from 'ngx-cookie-service';
 
 interface Pokemon {
@@ -27,14 +28,16 @@ interface HuntInstance {
   styleUrls: ['./hunt-instance.component.css'],
 })
 export class HuntInstanceComponent {
-  gameList: string[] = [];
-  game: string = '';
-  generation: string = '';
-  method: string = '';
-  pokemon: string = '';
+  gameList: string[] = [];        // List of games
+  game: string = '';              // Chosen game by user
+  generation: string = '';        // Obtained from game selection
+  methodList: string[] = [];      // List of methods
+  method: string = '';            // Chosen by user
+  pokemon: string = '';           // Chosen by user
 
   constructor(
     private gameGenerationService: GameGenerationService,
+    private GenerationMethodsService: GenerationMethodsService,
     private cookieService: CookieService
   ) {}
 
@@ -47,18 +50,34 @@ export class HuntInstanceComponent {
   onGameChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
     this.game = target.value;
+
     if (this.game) {
       this.gameGenerationService.getGameGenerations().subscribe((data) => {
-        this.generation = data[this.game];
+        if (this.generation !== data[this.game]) {
+          // sanitize methods in both HTML and TS
+          this.method = '';
+          this.methodList = [];
+
+          // obtain new generation and set the value in TS
+          this.generation = data[this.game];
+
+          // obtain new method list for HTML
+          this.GenerationMethodsService.getMethodsByGen().subscribe((data) => {
+            this.methodList = Object.keys(data[this.generation]);
+          });
+        }
       });
+    }
+    else {
+      this.method = '';
+      this.methodList = [];
+      this.generation = '';
     }
   }
 
   onMethodChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
-    console.log(this.method);
     this.method = target.value;
-    console.log(this.method);
   }
 
   onPokemonChange(event: Event): void {

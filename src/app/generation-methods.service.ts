@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class GameGenerationService {
+export class GenerationMethodsService {
   private jsonUrl = 'assets/shiny-methods.json';
 
   constructor(private http: HttpClient) {}
