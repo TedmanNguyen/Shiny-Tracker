@@ -29,11 +29,11 @@ interface HuntInstance {
 export class HuntInstanceComponent implements OnInit {
   gameGenerations: string[] = [];
   huntInstances: HuntInstance[] = [];
-  newHuntInstance: HuntInstance = { 
-    generation: '', 
-    pokemon: { name: '', spriteUrl: '' }, 
+  newHuntInstance: HuntInstance = {
+    generation: '',
+    pokemon: { name: '', spriteUrl: '' },
     method: { name: '', rate: '', encounters: 0 },
-    found: false 
+    found: false,
   };
 
   constructor(
@@ -54,11 +54,11 @@ export class HuntInstanceComponent implements OnInit {
     // Saves to cookies
     this.saveHuntInstances();
     // Resets the hunt instance object to empty strings
-    this.newHuntInstance = { 
-      generation: '', 
-      pokemon: { name: '', spriteUrl: '' }, 
+    this.newHuntInstance = {
+      generation: '',
+      pokemon: { name: '', spriteUrl: '' },
       method: { name: '', rate: '', encounters: 0 },
-      found: false 
+      found: false,
     };
   }
 
