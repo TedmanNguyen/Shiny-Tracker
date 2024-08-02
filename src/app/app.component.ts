@@ -6,6 +6,7 @@ import { HuntInstanceComponent } from './hunt-instance/hunt-instance.component';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { DomSanitizer } from "@angular/platform-browser";
 import { MatIconRegistry } from '@angular/material/icon';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -14,15 +15,17 @@ import { MatIconRegistry } from '@angular/material/icon';
             HomepageComponent, HuntInstanceComponent, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  providers: [CookieService]
 })
 
 export class AppComponent {
   title = 'soseproject';
-  gameName : string = '';
+  //gameName : string = '';
 
   constructor(private apiService: ApiService,
               private matIconRegistry: MatIconRegistry,
-              private domSanitizer: DomSanitizer) {
+              private domSanitizer: DomSanitizer,
+              private cookieService: CookieService) {
 
     this.matIconRegistry.addSvgIcon(
       'pokeball',
