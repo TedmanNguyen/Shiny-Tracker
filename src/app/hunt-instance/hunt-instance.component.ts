@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GameGenerationService } from '../game-generation.service';
 import { CookieService } from 'ngx-cookie-service';
 
 interface Pokemon {
@@ -16,33 +18,43 @@ interface HuntInstance {
   method: Method;
   found: boolean;
 }
+
 @Component({
   selector: 'app-hunt-instance',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './hunt-instance.component.html',
   styleUrls: ['./hunt-instance.component.css'],
 })
-export class HuntInstanceComponent {
+export class HuntInstanceComponent implements OnInit {
+  gameGenerations: string[] = [];
   huntInstances: HuntInstance[] = [];
   newHuntInstance: HuntInstance = { 
     generation: '', 
     pokemon: { name: '', spriteUrl: '' }, 
-    method: {name: '', rate: '', encounters: 0},
-    found: false
+    method: { name: '', rate: '', encounters: 0 },
+    found: false 
   };
 
-  constructor(private cookieService: CookieService) {
+  constructor(
+    private gameGenerationService: GameGenerationService,
+    private cookieService: CookieService
+  ) {}
+
+  ngOnInit(): void {
+    this.gameGenerationService.getGameGenerations().subscribe((data) => {
+      this.gameGenerations = Object.keys(data);
+    });
     this.loadHuntInstances();
   }
 
   addHuntInstance(): void {
-    //pushes the new hunt instance object to the hunt instances
+    // Pushes the new hunt instance object to the hunt instances
     this.huntInstances.push({ ...this.newHuntInstance });
-    //Saves to cookies
+    // Saves to cookies
     this.saveHuntInstances();
-    //resets the hunt instance object to empty strings
-    this.newHuntInstance = this.newHuntInstance = { 
+    // Resets the hunt instance object to empty strings
+    this.newHuntInstance = { 
       generation: '', 
       pokemon: { name: '', spriteUrl: '' }, 
       method: { name: '', rate: '', encounters: 0 },
@@ -60,9 +72,4 @@ export class HuntInstanceComponent {
       this.huntInstances = JSON.parse(storedHuntInstances);
     }
   }
-
-
-
-
-
 }
