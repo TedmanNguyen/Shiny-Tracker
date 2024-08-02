@@ -1,11 +1,11 @@
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
+import { Component } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+=========
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameGenerationService } from '../game-generation.service';
-=======
-import { Component } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
->>>>>>> 1640d3ba3dd913baa3c6ae30bfe2b4d2ce684f82
+>>>>>>>>> Temporary merge branch 2
 
 interface Pokemon {
   name: string;
@@ -22,6 +22,7 @@ interface HuntInstance {
   method: Method;
   found: boolean;
 }
+
 @Component({
   selector: 'app-hunt-instance',
   standalone: true,
@@ -30,36 +31,34 @@ interface HuntInstance {
   styleUrls: ['./hunt-instance.component.css'],
 })
 export class HuntInstanceComponent {
-<<<<<<< HEAD
-  gameGenerations: string[] = [];
+<<<<<<<<< Temporary merge branch 1
+  huntInstances: HuntInstance[] = [];
+  newHuntInstance: HuntInstance = { 
+    generation: '', 
+    pokemon: { name: '', spriteUrl: '' }, 
+    method: { name: '', rate: '', encounters: 0 },
+    found: false 
+  };
 
-  constructor(private gameGenerationService: GameGenerationService) {}
+  constructor(
+    private gameGenerationService: GameGenerationService,
+    private cookieService: CookieService
+  ) {}
 
   ngOnInit(): void {
     this.gameGenerationService.getGameGenerations().subscribe((data) => {
       this.gameGenerations = Object.keys(data);
     });
-  }
-=======
-  huntInstances: HuntInstance[] = [];
-  newHuntInstance: HuntInstance = { 
-    generation: '', 
-    pokemon: { name: '', spriteUrl: '' }, 
-    method: {name: '', rate: '', encounters: 0},
-    found: false
-  };
-
-  constructor(private cookieService: CookieService) {
     this.loadHuntInstances();
   }
 
   addHuntInstance(): void {
-    //pushes the new hunt instance object to the hunt instances
+    // Pushes the new hunt instance object to the hunt instances
     this.huntInstances.push({ ...this.newHuntInstance });
-    //Saves to cookies
+    // Saves to cookies
     this.saveHuntInstances();
-    //resets the hunt instance object to empty strings
-    this.newHuntInstance = this.newHuntInstance = { 
+    // Resets the hunt instance object to empty strings
+    this.newHuntInstance = { 
       generation: '', 
       pokemon: { name: '', spriteUrl: '' }, 
       method: { name: '', rate: '', encounters: 0 },
@@ -82,5 +81,15 @@ export class HuntInstanceComponent {
 
 
 
->>>>>>> 1640d3ba3dd913baa3c6ae30bfe2b4d2ce684f82
+=========
+  gameGenerations: string[] = [];
+
+  constructor(private gameGenerationService: GameGenerationService) {}
+
+  ngOnInit(): void {
+    this.gameGenerationService.getGameGenerations().subscribe((data) => {
+      this.gameGenerations = Object.keys(data);
+    });
+  }
+>>>>>>>>> Temporary merge branch 2
 }
