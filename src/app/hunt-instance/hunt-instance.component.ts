@@ -1,9 +1,15 @@
+import { ApiService } from './../api.service';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { GameGenerationService } from '../game-generation.service';
 import { GenerationMethodsService } from '../generation-methods.service';
 import { CookieService } from 'ngx-cookie-service';
 
+
+/*
 interface Pokemon {
   name: string;
   spriteUrl: string;
@@ -19,11 +25,12 @@ interface HuntInstance {
   method: Method;
   found: boolean;
 }
+*/
 
 @Component({
   selector: 'app-hunt-instance',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './hunt-instance.component.html',
   styleUrls: ['./hunt-instance.component.css'],
 })
@@ -34,10 +41,13 @@ export class HuntInstanceComponent {
   methodList: string[] = [];      // List of methods
   method: string = '';            // Chosen by user
   pokemon: string = '';           // Chosen by user
+  pokemonSearchTerm: string = '';     // Search bar for pokemon
+  errorStatus: number | null = null;
 
   constructor(
     private gameGenerationService: GameGenerationService,
     private GenerationMethodsService: GenerationMethodsService,
+    private apiService: ApiService,
     private cookieService: CookieService
   ) {}
 
@@ -81,10 +91,83 @@ export class HuntInstanceComponent {
   }
 
   onPokemonChange(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    console.log(this.pokemon);
-    this.pokemon = target.value;
-    console.log(this.pokemon);
+
+    const inputElement = event.target as HTMLInputElement;
+    this.pokemonSearchTerm = inputElement.value;
+    console.log(this.pokemonSearchTerm);
+
+    if (this.pokemonSearchTerm) {
+      this.apiService.getData(`pokemon/${this.pokemonSearchTerm.toLowerCase()}`).
+      pipe(catchError((error) => {
+        if (error.status === 404) {
+          console.error('Pokemon not found');
+          //show message to user
+          this.errorStatus = 404;
+        } else {
+          console.error('An error occurred:', error);
+          this.errorStatus = error.status;
+        }
+        return of(null);
+      })
+      ).subscribe((data) => {
+        if (data) {
+          this.pokemon = data.name;
+          this.errorStatus = null;
+          console.log(data);
+        }
+      });
+    } else {
+      this.errorStatus = null;
+    }
+
+
+
+     //Check if the search pokemon is a valid api link
+
+
+    
+
+
+    /*
+    //if pokemon is filled out, check if it is in the game
+    if (this.pokemon) {
+
+      //Need logic that interacts with the API to check if the pokemon is in the game
+
+      //Get the list of pokemon in the generation
+
+      //Get the sprite of the pokemon
+
+
+      //if pokemon is in the game, then the user can submit the hunt instance
+
+      
+      this.gameGenerationService.getGameGenerations().subscribe((data) => {
+        if (this.generation !== data[this.game]) {
+          // sanitize methods in both HTML and TS
+          this.method = '';
+          this.methodList = [];
+
+          // obtain new generation and set the value in TS
+          this.generation = data[this.game];
+
+          // obtain new method list for HTML
+          this.GenerationMethodsService.getMethodsByGen().subscribe((data) => {
+            this.methodList = Object.keys(data[this.generation]);
+          });
+        }
+
+
+
+      });
+    }
+    else {
+      this.method = '';
+      this.methodList = [];
+      this.generation = '';
+    }
+    */
+
   }
 };
 
