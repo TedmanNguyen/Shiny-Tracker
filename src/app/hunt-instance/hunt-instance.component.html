@@ -35,5 +35,11 @@
       <p *ngIf="errorStatus === 404" class="error-message">Pokemon not found. Please try again.</p>
     </div>
   </div>
-  <button class="start-button" (click)="onStartHunt($event)">START HUNT</button>
+  <button
+    class="start-button"
+    (click)="onStartHunt($event)"
+    [disabled]="!game || !method || !pokemon"
+  >
+    START HUNT
+  </button>
 </div>

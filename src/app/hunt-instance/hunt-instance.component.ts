@@ -8,8 +8,6 @@ import { GameGenerationService } from '../game-generation.service';
 import { GenerationMethodsService } from '../generation-methods.service';
 import { CookieService } from 'ngx-cookie-service';
 
-
-/*
 interface Pokemon {
   name: string;
   spriteUrl: string;
@@ -26,7 +24,6 @@ interface HuntInstance {
   method: Method;
   found: boolean;
 }
-*/
 
 @Component({
   selector: 'app-hunt-instance',
@@ -36,15 +33,15 @@ interface HuntInstance {
   styleUrls: ['./hunt-instance.component.css'],
 })
 export class HuntInstanceComponent {
-  gameList: string[] = [];        // List of games
-  game: string = '';              // Chosen game by user
-  generation: string = '';        // Obtained from game selection
-  methodList: string[] = [];      // List of methods
-  method: string = '';            // Chosen by user
-  pokemon: string = '';           // Chosen by user
+  gameList: string[] = []; // List of games
+  game: string = ''; // Chosen game by user
+  generation: string = ''; // Obtained from game selection
+  methodList: string[] = []; // List of methods
+  method: string = ''; // Chosen by user
+  pokemon: string = ''; // Chosen by user
   huntInstances: HuntInstance[] = []; // Store instances for now
   errorMessage: string = '';
-  pokemonSearchTerm: string = '';     // Search bar for pokemon
+  pokemonSearchTerm: string = ''; // Search bar for pokemon
   errorStatus: number | null = null;
 
   constructor(
@@ -108,36 +105,33 @@ export class HuntInstanceComponent {
     console.log(this.pokemonSearchTerm);
 
     if (this.pokemonSearchTerm) {
-      this.apiService.getData(`pokemon/${this.pokemonSearchTerm.toLowerCase()}`).
-      pipe(catchError((error) => {
-        if (error.status === 404) {
-          console.error('Pokemon not found');
-          //show message to user
-          this.errorStatus = 404;
-        } else {
-          console.error('An error occurred:', error);
-          this.errorStatus = error.status;
-        }
-        return of(null);
-      })
-      ).subscribe((data) => {
-        if (data) {
-          this.pokemon = data.name;
-          this.errorStatus = null;
-          console.log(data);
-        }
-      });
+      this.apiService
+        .getData(`pokemon/${this.pokemonSearchTerm.toLowerCase()}`)
+        .pipe(
+          catchError((error) => {
+            if (error.status === 404) {
+              console.error('Pokemon not found');
+              //show message to user
+              this.errorStatus = 404;
+            } else {
+              console.error('An error occurred:', error);
+              this.errorStatus = error.status;
+            }
+            return of(null);
+          })
+        )
+        .subscribe((data) => {
+          if (data) {
+            this.pokemon = data.name;
+            this.errorStatus = null;
+            console.log(data);
+          }
+        });
     } else {
       this.errorStatus = null;
     }
 
-
-
-     //Check if the search pokemon is a valid api link
-
-
-    
-
+    //Check if the search pokemon is a valid api link
 
     /*
     //if pokemon is filled out, check if it is in the game
@@ -178,11 +172,11 @@ export class HuntInstanceComponent {
       this.generation = '';
     }
     */
-
   }
 
   onStartHunt(event: Event): void {
-    if (this.game !== '' && this.method !== '' && this.pokemon !== '') {
+    const button = event.target as HTMLButtonElement;
+    if (!button.disabled) {
       const newHuntInstance: HuntInstance = {
         game: this.game,
         generation: this.generation,
@@ -206,15 +200,10 @@ export class HuntInstanceComponent {
       // this.saveHuntInstances();
 
       // Redirect the user to the homepage
-      window.location.href = '';
-    } else {
-      this.errorMessage = 'Please fill in all fields before starting the hunt.';
+      // window.location.href = '';
     }
   }
-};
-
-
-  
+}
 
 /*
 export class HuntInstanceComponent implements OnInit {
