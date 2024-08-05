@@ -17,8 +17,8 @@
 }
 
 .hunt-wrapper .hunt-container {
-  background-color: #d9d9d9 !important;
-  background-image: none !important;
+  background-color: #d9d9d9;
+  background-image: none;
   position: relative;
   border-radius: 50px;
   padding: 10px;

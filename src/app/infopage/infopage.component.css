@@ -1,0 +1,40 @@
+.infopage {
+    background: linear-gradient(#ffffff, #d4d4d4);
+}
+
+mat-card {
+    border: 0.1em solid #929292;
+    margin: 5%;
+    box-shadow: 2em 2em 1em #00000025;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.eevee-card {
+    max-width: 50%;
+}
+
+.method-card {
+    width: 80%;
+}
+
+img {
+    object-fit: cover;
+    width: 100%;
+}
+
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, th, td {
+    border: 0.2em solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: center;
+    padding: 1em;
+}
