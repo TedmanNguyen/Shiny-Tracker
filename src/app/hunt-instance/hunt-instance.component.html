@@ -1,9 +1,11 @@
 <div class="hunt-wrapper">
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
   <div class="hunt-container">
     <div class="selector-group">
       <p class="choose-game">Choose a game:</p>
       <select class="selector" (change)="onGameChange($event)">
-        <option value=""> --- </option>
+        <option value="">---</option>
         <option *ngFor="let game of gameList" [value]="game">
           {{ game }}
         </option>
@@ -11,8 +13,12 @@
     </div>
     <div class="selector-group">
       <p class="choose-game">Choose a method:</p>
-      <select class="selector"  [disabled]="!generation" (change)="onMethodChange($event)">
-        <option value=""> --- </option>
+      <select
+        class="selector"
+        [disabled]="!generation"
+        (change)="onMethodChange($event)"
+      >
+        <option value="">---</option>
         <option *ngFor="let method of methodList" [value]="method">
           {{ method }}
         </option>
@@ -21,11 +27,12 @@
     <div class="selector-group">
       <p class="choose-game">Choose a pokemon:</p>
       <select class="selector" (change)="onPokemonChange($event)">
-        <option value=""> --- </option>
+        <option value="">---</option>
         <option *ngFor="let game of gameList" [value]="game">
           {{ game }}
         </option>
       </select>
     </div>
   </div>
+  <button class="start-button" (click)="onStartHunt($event)">START HUNT</button>
 </div>

@@ -1,6 +1,7 @@
 .hunt-wrapper {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin: 0;
   height: 80vh; /* Use 100vh to ensure it takes the full viewport height */
@@ -17,8 +18,8 @@
 }
 
 .hunt-wrapper .hunt-container {
-  background-color: #d9d9d9;
-  background-image: none;
+  background-color: #d9d9d9 !important;
+  background-image: none !important;
   position: relative;
   border-radius: 50px;
   padding: 10px;
@@ -39,7 +40,6 @@
     width: 50%; /* Adjust width for iPad Air and similar screens */
     padding: 50px 0 0 35px;
   }
-
   .selector {
     width: 50%; /* Make selectors take full width */
     padding: 50px 0 0 35px;
@@ -51,7 +51,6 @@
     width: 50%; /* Adjust width for smaller screens */
     padding: 50px 0 0 35px;
   }
-
   .selector {
     width: 50%; /* Make selectors take full width */
     padding: 50px 0 0 35px;
@@ -63,7 +62,6 @@
     width: 50%; /* Adjust width for very small screens */
     padding: 50px 0 0 35px;
   }
-
   .selector {
     width: 50%; /* Make selectors take full width */
     padding: 50px 0 0 35px;
@@ -101,4 +99,36 @@
   font-size: 18px;
   position: relative;
   width: 250px;
+}
+
+.start-button {
+  margin-top: 100px;
+  color: white;
+  background-color: #ff3030;
+  border: 4px solid black;
+  border-radius: 25px;
+  padding: 10px 50px;
+  font-weight: bold;
+  font-size: 22px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition effect */
+}
+
+.start-button:hover {
+  background-color: #ff5050; /* Change background color on hover */
+  transform: scale(1.05); /* Slightly increase the scale on hover */
+  box-shadow: 0 5px #666; /* Add shadow effect */
+  transform: translateY(4px); /* Move the button down on hover */
+  cursor: pointer;
+}
+
+.start-button:active {
+  background-color: #ff5050; /* Change background color on active */
+  transform: translateY(-8px);
+  box-shadow: 0 5px #666; /* Add shadow effect */
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
 }
