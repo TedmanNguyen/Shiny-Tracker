@@ -23,13 +23,12 @@ export class RateGenerationService {
     // load rates fron JSON
     this.getRates().subscribe(rates => {
       // get the correct generation
-      let generation = rates.data[userGen];
+      let generation: Object = rates.data[userGen];
 
       // find correct method in generation and get its rate
-      let rate = generation.find((method: { name: string }) => method.name === userMethod); 
+      let rate = (generation as any)[userMethod]; 
       
-      // sanity check once this function is in use
-      console.log(rate);
+      // returns the rate as a string, or undefined if invalid parameters
       return rate;
     });
   }
