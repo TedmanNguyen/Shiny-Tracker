@@ -26,12 +26,13 @@
     </div>
     <div class="selector-group">
       <p class="choose-game">Choose a pokemon:</p>
-      <select class="selector" (change)="onPokemonChange($event)">
-        <option value="">---</option>
-        <option *ngFor="let game of gameList" [value]="game">
-          {{ game }}
-        </option>
-      </select>
+      <input 
+        type="text" 
+        class="search-bar" 
+        placeholder="Search for a pokemon" 
+        (input)="onPokemonChange($event)"
+      /> 
+      <p *ngIf="errorStatus === 404" class="error-message">Pokemon not found. Please try again.</p>
     </div>
   </div>
   <button class="start-button" (click)="onStartHunt($event)">START HUNT</button>
