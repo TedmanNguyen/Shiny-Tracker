@@ -20,6 +20,7 @@ interface Method {
   encounters: number;
 }
 interface HuntInstance {
+  game: string;
   generation: string;
   pokemon: Pokemon;
   method: Method;
@@ -41,6 +42,8 @@ export class HuntInstanceComponent {
   methodList: string[] = [];      // List of methods
   method: string = '';            // Chosen by user
   pokemon: string = '';           // Chosen by user
+  huntInstances: HuntInstance[] = []; // Store instances for now
+  errorMessage: string = '';
   pokemonSearchTerm: string = '';     // Search bar for pokemon
   errorStatus: number | null = null;
 
@@ -55,6 +58,11 @@ export class HuntInstanceComponent {
     this.gameGenerationService.getGameGenerations().subscribe((data) => {
       this.gameList = Object.keys(data);
     });
+  }
+
+  // For Ted
+  saveHuntInstances(): void {
+    this.cookieService.set('huntInstances', JSON.stringify(this.huntInstances));
   }
 
   onGameChange(event: Event): void {
@@ -72,13 +80,17 @@ export class HuntInstanceComponent {
           this.generation = data[this.game];
 
           // obtain new method list for HTML
-          this.GenerationMethodsService.getMethodsByGen().subscribe((data) => {
-            this.methodList = Object.keys(data[this.generation]);
+          this.GenerationMethodsService.getMethodsByGen().subscribe({
+            next: (data) => {
+              this.methodList = Object.keys(data[this.generation]);
+            },
+            error: (err) => {
+              console.error('Error fetching methods by generation', err);
+            },
           });
         }
       });
-    }
-    else {
+    } else {
       this.method = '';
       this.methodList = [];
       this.generation = '';
@@ -91,7 +103,6 @@ export class HuntInstanceComponent {
   }
 
   onPokemonChange(event: Event): void {
-
     const inputElement = event.target as HTMLInputElement;
     this.pokemonSearchTerm = inputElement.value;
     console.log(this.pokemonSearchTerm);
@@ -169,12 +180,43 @@ export class HuntInstanceComponent {
     */
 
   }
+
+  onStartHunt(event: Event): void {
+    if (this.game !== '' && this.method !== '' && this.pokemon !== '') {
+      const newHuntInstance: HuntInstance = {
+        game: this.game,
+        generation: this.generation,
+        pokemon: {
+          name: this.pokemon,
+          spriteUrl: '', // Empty for now
+        },
+        method: {
+          name: this.method,
+          rate: '', // Empty for now
+          encounters: 0,
+        },
+        found: false, // I am assuming this means if a shiny pokemon has been found ?
+      };
+
+      console.log(newHuntInstance);
+      // // Add the new hunt instance to the huntInstances array
+      // this.huntInstances.push(newHuntInstance);
+
+      // // Save the huntInstances array to cookies
+      // this.saveHuntInstances();
+
+      // Redirect the user to the homepage
+      window.location.href = '';
+    } else {
+      this.errorMessage = 'Please fill in all fields before starting the hunt.';
+    }
+  }
 };
 
 
   
 
-  /*
+/*
 export class HuntInstanceComponent implements OnInit {
   gameGenerations: string[] = [];
   huntInstances: HuntInstance[] = [];

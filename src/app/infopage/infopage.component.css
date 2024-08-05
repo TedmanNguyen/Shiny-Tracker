@@ -1,0 +1,56 @@
+.infopage {
+    background: linear-gradient(#ffffff, #d4d4d4);
+    padding: 3em;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+mat-card {
+    border: 0.1em solid #929292;
+    margin: 5%;
+    box-shadow: 2em 2em 1em #00000025;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+mat-card-title {
+    padding: 0.5em;
+}
+
+.eevee-card {
+    max-width: 50%;
+}
+
+.method-card {
+    width: 80%;
+}
+
+img {
+    object-fit: cover;
+    width: 100%;
+}
+
+table {
+    background-color: #fdfbff;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+}
+
+table, th, td {
+    border: 0.2em solid #929292;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: center;
+    padding: 1em;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 1em;
+}
