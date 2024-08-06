@@ -9,7 +9,7 @@
     "generation-iv": {
         "base-rate": "1/8192",
         "masuda-method": "5/8192",
-        "poke-radar": "gen-iv-radar"
+        "poke-radar": "poke-radar"
     },
     "generation-v": {
         "base-rate": "1/8192",
@@ -20,11 +20,11 @@
     "generation-vi": {
         "base-rate": "1/4096",
         "masuda-method": "6/4096",
-        "poke-radar": "gen-vi-radar",
+        "poke-radar": "poke-radar",
         "chain-fishing": "chain-fishing",
         "base-rate-charm": "1/512",
         "masuda-method-charm": "8/4096",
-        "poke-radar-charm": "gen-vi-radar-charm",
+        "poke-radar-charm": "poke-radar",
         "chain-fishing-charm": "chain-fishing-charm"
     },
     "generation-vii": {
