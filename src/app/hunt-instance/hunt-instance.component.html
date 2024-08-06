@@ -36,6 +36,10 @@
         
       /> 
       <p *ngIf="errorStatus === 404" class="error-message">Pokemon not found. Please try again.</p>
+      <div>
+        <img *ngIf="!spriteLoadError" [src]="spriteUrl" alt="pokemon sprite" (error)="onSpriteError()" />
+        <img *ngIf="!shinySpriteLoadError" [src]="spriteShinyUrl" alt="shiny pokemon sprite" (error)="onShinySpriteError()" />
+      </div>
     </div>
   </div>
   <button

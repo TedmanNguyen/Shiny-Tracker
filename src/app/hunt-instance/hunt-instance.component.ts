@@ -46,6 +46,8 @@ export class HuntInstanceComponent {
   errorMessage: string = '';
   pokemonSearchTerm: string = ''; // Search bar for pokemon
   errorStatus: number | null = null;
+  spriteLoadError: boolean = false;
+  shinySpriteLoadError: boolean = false;
 
   constructor(
     private gameGenerationService: GameGenerationService,
@@ -110,6 +112,14 @@ export class HuntInstanceComponent {
     this.method = target.value;
   }
 
+  onSpriteError() {
+    this.spriteLoadError = true;
+  }
+
+  onShinySpriteError() {
+    this.shinySpriteLoadError = true;
+  }
+
   onPokemonChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     this.pokemonSearchTerm = inputElement.value;
@@ -140,6 +150,12 @@ export class HuntInstanceComponent {
             console.log(data);
             console.log(this.spriteUrl);
             console.log(this.spriteShinyUrl);
+            this.spriteLoadError = false;
+            this.shinySpriteLoadError = false;
+          }
+          else {
+            this.spriteUrl = '';
+            this.spriteShinyUrl = '';
           }
         });
     } else {
