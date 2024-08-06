@@ -13,8 +13,8 @@ export class ApiService {
   
   constructor(private http: HttpClient) { }
 
-  getData(endpoint: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${endpoint}`);
+  getPokemon(endpoint: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/pokemon/${endpoint}`);
   }
   
   /*

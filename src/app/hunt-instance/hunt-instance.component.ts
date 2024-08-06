@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 interface Pokemon {
   name: string;
   spriteUrl: string;
+  spriteShinyUrl: string;
 }
 interface Method {
   name: string;
@@ -39,6 +40,8 @@ export class HuntInstanceComponent {
   methodList: string[] = []; // List of methods
   method: string = ''; // Chosen by user
   pokemon: string = ''; // Chosen by user
+  spriteUrl: string = ''; // Obtained from API
+  spriteShinyUrl: string = ''; // Obtained from API
   huntInstances: HuntInstance[] = []; // Store instances for now
   errorMessage: string = '';
   pokemonSearchTerm: string = ''; // Search bar for pokemon
@@ -72,6 +75,11 @@ export class HuntInstanceComponent {
           // sanitize methods in both HTML and TS
           this.method = '';
           this.methodList = [];
+          this.pokemon = '';
+          this.spriteUrl = '';
+          this.spriteShinyUrl = '';
+          this.pokemonSearchTerm = '';
+          this.errorStatus = null;
 
           // obtain new generation and set the value in TS
           this.generation = data[this.game];
@@ -91,6 +99,9 @@ export class HuntInstanceComponent {
       this.method = '';
       this.methodList = [];
       this.generation = '';
+      this.pokemon = '';
+      this.spriteUrl = '';
+      this.spriteShinyUrl = '';
     }
   }
 
@@ -102,11 +113,10 @@ export class HuntInstanceComponent {
   onPokemonChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     this.pokemonSearchTerm = inputElement.value;
-    console.log(this.pokemonSearchTerm);
 
     if (this.pokemonSearchTerm) {
       this.apiService
-        .getData(`pokemon/${this.pokemonSearchTerm.toLowerCase()}`)
+        .getPokemon(`${this.pokemonSearchTerm.toLowerCase()}`)
         .pipe(
           catchError((error) => {
             if (error.status === 404) {
@@ -123,55 +133,22 @@ export class HuntInstanceComponent {
         .subscribe((data) => {
           if (data) {
             this.pokemon = data.name;
+            this.spriteUrl = data.sprites.other['official-artwork'].front_default;
+            this.spriteShinyUrl = data.sprites.other['official-artwork'].front_shiny;
+
             this.errorStatus = null;
             console.log(data);
+            console.log(this.spriteUrl);
+            console.log(this.spriteShinyUrl);
           }
         });
     } else {
+      this.pokemon = '';
+      this.spriteUrl = '';
+      this.spriteShinyUrl = '';
       this.errorStatus = null;
     }
 
-    //Check if the search pokemon is a valid api link
-
-    /*
-    //if pokemon is filled out, check if it is in the game
-    if (this.pokemon) {
-
-      //Need logic that interacts with the API to check if the pokemon is in the game
-
-      //Get the list of pokemon in the generation
-
-      //Get the sprite of the pokemon
-
-
-      //if pokemon is in the game, then the user can submit the hunt instance
-
-      
-      this.gameGenerationService.getGameGenerations().subscribe((data) => {
-        if (this.generation !== data[this.game]) {
-          // sanitize methods in both HTML and TS
-          this.method = '';
-          this.methodList = [];
-
-          // obtain new generation and set the value in TS
-          this.generation = data[this.game];
-
-          // obtain new method list for HTML
-          this.GenerationMethodsService.getMethodsByGen().subscribe((data) => {
-            this.methodList = Object.keys(data[this.generation]);
-          });
-        }
-
-
-
-      });
-    }
-    else {
-      this.method = '';
-      this.methodList = [];
-      this.generation = '';
-    }
-    */
   }
 
   onStartHunt(event: Event): void {
@@ -182,7 +159,8 @@ export class HuntInstanceComponent {
         generation: this.generation,
         pokemon: {
           name: this.pokemon,
-          spriteUrl: '', // Empty for now
+          spriteUrl: this.spriteUrl,
+          spriteShinyUrl: this.spriteShinyUrl,
         },
         method: {
           name: this.method,
@@ -206,47 +184,15 @@ export class HuntInstanceComponent {
 }
 
 /*
-export class HuntInstanceComponent implements OnInit {
-  gameGenerations: string[] = [];
-  huntInstances: HuntInstance[] = [];
-  newHuntInstance: HuntInstance = {
-    generation: '',
-    pokemon: { name: '', spriteUrl: '' },
-    method: { name: '', rate: '', encounters: 0 },
-    found: false,
-  };
-  
-
-  constructor(
-    private gameGenerationService: GameGenerationService,
-    private cookieService: CookieService
-  ) {}
-
   ngOnInit(): void {
     this.gameGenerationService.getGameGenerations().subscribe((data) => {
       this.gameGenerations = Object.keys(data);
     });
     this.loadHuntInstances();
   }
-
-  addHuntInstance(): void {
-    // Pushes the new hunt instance object to the hunt instances
-    this.huntInstances.push({ ...this.newHuntInstance });
-    // Saves to cookies
-    this.saveHuntInstances();
-    // Resets the hunt instance object to empty strings
-    this.newHuntInstance = {
-      generation: '',
-      pokemon: { name: '', spriteUrl: '' },
-      method: { name: '', rate: '', encounters: 0 },
-      found: false,
-    };
-  }
-
   saveHuntInstances(): void {
     this.cookieService.set('huntInstances', JSON.stringify(this.huntInstances));
   }
-
   loadHuntInstances(): void {
     const storedHuntInstances = this.cookieService.get('huntInstances');
     if (storedHuntInstances) {

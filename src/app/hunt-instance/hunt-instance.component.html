@@ -28,9 +28,12 @@
       <p class="choose-game">Choose a pokemon:</p>
       <input 
         type="text" 
-        class="search-bar" 
+        id="search-bar" 
+        [disabled]="!generation"
         placeholder="Search for a pokemon" 
+        [(ngModel)]="pokemonSearchTerm"
         (input)="onPokemonChange($event)"
+        
       /> 
       <p *ngIf="errorStatus === 404" class="error-message">Pokemon not found. Please try again.</p>
     </div>
