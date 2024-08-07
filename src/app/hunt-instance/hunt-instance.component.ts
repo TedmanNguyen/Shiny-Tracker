@@ -13,16 +13,11 @@ interface Pokemon {
   spriteUrl: string;
   spriteShinyUrl: string;
 }
-interface Method {
-  name: string;
-  rate: string;
-  encounters: number;
-}
 interface HuntInstance {
   game: string;
   generation: string;
   pokemon: Pokemon;
-  method: Method;
+  method: string;
   found: boolean;
 }
 
@@ -186,11 +181,7 @@ export class HuntInstanceComponent {
           spriteUrl: this.spriteUrl,
           spriteShinyUrl: this.spriteShinyUrl,
         },
-        method: {
-          name: this.method,
-          rate: '', // Empty for now
-          encounters: 0,
-        },
+        method: this.method,
         found: false, // I am assuming this means if a shiny pokemon has been found ?
       };
 
@@ -207,8 +198,6 @@ export class HuntInstanceComponent {
       window.location.href = '';
     }
   }
-
-
 
 }
 

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service'; 
 import { HuntInstanceComponent } from '../hunt-instance/hunt-instance.component';
 import { RateGenerationService } from '../rate-generation.service';
+import { create } from 'domain';
 
 interface HuntCard {
   game: string;
@@ -10,12 +11,14 @@ interface HuntCard {
   pokemon: string;
   method: string;
   found: boolean;
-  counter: Counter;
+  incrementer: Incrementer;
 }
 
-interface Counter {
+interface Incrementer {
   encounters: number;
   rate: string;
+  rateMethod: any;
+  hasCharm: boolean;
 }
 
 @Component({
@@ -44,4 +47,64 @@ export class HuntCounterComponent {
     }
     return [];
   }
+
+  increment(incrementer: Incrementer): void {
+    incrementer.encounters++;
+    if (incrementer.rateMethod) {
+      incrementer.rate = incrementer.rateMethod(incrementer.encounters, incrementer.hasCharm);
+    }
+  }
+
+  initializeCard(huntInstance: any): HuntCard {
+    return {
+      game: huntInstance.game,
+      generation: huntInstance.generation,
+      pokemon: huntInstance.pokemon,
+      method: huntInstance.method,
+      found: huntInstance.found,
+      incrementer: this.createIncrementer(huntInstance)
+    };
+  }
+
+  getRate(method: string, gen: string) {
+    let rate = this.rateGenerationService.getSelectedRate(method, gen)
+    if (!rate.includes('/')) {
+      switch (method) {
+        case 'chain-fishing' || 'chain-fishing-charm':
+          return this.rateGenerationService.getChainFishingRate;
+        case 'sos-battle' || 'sos-battle-charm':
+          return this.rateGenerationService.getSOSRate;
+        case 'poke-radar':
+          return this.rateGenerationService.getRadarRate;
+        default:
+          return 'Invalid Method';
+      }
+    }
+    else {
+      return rate;
+    }
+  }
+
+  createIncrementer(huntInstance: any): Incrementer {
+    let rate = this.getRate(huntInstance.method, huntInstance.generation);
+    let hasCharm = huntInstance.method.includes('charm');
+
+    if (typeof rate === 'string') {
+      return {
+        encounters: 0,
+        rate: rate,
+        rateMethod: null,
+        hasCharm: hasCharm
+      };
+    }
+    else {
+      return {
+        encounters: 0,
+        rate: rate(0, hasCharm),
+        rateMethod: rate,
+        hasCharm: hasCharm
+      };
+    }
+  }
 }
+
