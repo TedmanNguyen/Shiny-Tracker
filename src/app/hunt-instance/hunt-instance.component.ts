@@ -60,6 +60,14 @@ export class HuntInstanceComponent {
     this.gameGenerationService.getGameGenerations().subscribe((data) => {
       this.gameList = Object.keys(data);
     });
+    this.loadHuntInstances();
+  }
+
+  loadHuntInstances(): void {
+    const storedHuntInstances = this.cookieService.get('huntInstances');
+    if (storedHuntInstances) {
+      this.huntInstances = JSON.parse(storedHuntInstances);
+    }
   }
 
   // For Ted
@@ -187,16 +195,21 @@ export class HuntInstanceComponent {
       };
 
       console.log(newHuntInstance);
-      // // Add the new hunt instance to the huntInstances array
-      // this.huntInstances.push(newHuntInstance);
 
-      // // Save the huntInstances array to cookies
-      // this.saveHuntInstances();
+
+      // Add the new hunt instance to the huntInstances array
+      this.huntInstances.push(newHuntInstance);
+
+      // Save the huntInstances array to cookies
+      this.saveHuntInstances();
 
       // Redirect the user to the homepage
-      // window.location.href = '';
+      window.location.href = '';
     }
   }
+
+
+
 }
 
 /*
@@ -209,11 +222,5 @@ export class HuntInstanceComponent {
   saveHuntInstances(): void {
     this.cookieService.set('huntInstances', JSON.stringify(this.huntInstances));
   }
-  loadHuntInstances(): void {
-    const storedHuntInstances = this.cookieService.get('huntInstances');
-    if (storedHuntInstances) {
-      this.huntInstances = JSON.parse(storedHuntInstances);
-    }
-  }
+*/
 
-  */
