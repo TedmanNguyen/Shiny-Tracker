@@ -30,6 +30,7 @@ interface Incrementer {
 })
 export class HuntCounterComponent {
   huntInstances: any[] = [];
+  huntCards: HuntCard[] = [];
 
   constructor(private cookieService: CookieService,
               private rateGenerationService: RateGenerationService
@@ -37,7 +38,11 @@ export class HuntCounterComponent {
 
   ngOnInit(): void {
     this.huntInstances = this.loadHuntInstances();
-      console.log(this.huntInstances);
+    console.log(this.huntInstances);
+    for (let huntInstance of this.huntInstances) {
+      this.huntCards.push(this.initializeCard(huntInstance));
+    }
+    console.log(this.huntCards)
   }
 
   loadHuntInstances(): any {
@@ -68,6 +73,7 @@ export class HuntCounterComponent {
 
   getRate(method: string, gen: string) {
     let rate = this.rateGenerationService.getSelectedRate(method, gen)
+    console.log(rate);
     if (!rate.includes('/')) {
       switch (method) {
         case 'chain-fishing' || 'chain-fishing-charm':
