@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service'; 
 import { HuntInstanceComponent } from '../hunt-instance/hunt-instance.component';
 import { RateGenerationService } from '../rate-generation.service';
-import { create } from 'domain';
 
 interface HuntCard {
   game: string;
@@ -29,20 +28,19 @@ interface Incrementer {
   styleUrl: './hunt-counter.component.css'
 })
 export class HuntCounterComponent {
-  huntInstances: any[] = [];
-  huntCards: HuntCard[] = [];
+  huntInstances: any[] = [];  // array of hunt instances from cookie
+  huntCards: HuntCard[] = []; // array of hunt cards to display
 
   constructor(private cookieService: CookieService,
               private rateGenerationService: RateGenerationService
   ) {}
 
+  // loads hunt instances from cookie and initializes all cards
   ngOnInit(): void {
     this.huntInstances = this.loadHuntInstances();
-    console.log(this.huntInstances);
     for (let huntInstance of this.huntInstances) {
       this.huntCards.push(this.initializeCard(huntInstance));
     }
-    console.log(this.huntCards)
   }
 
   loadHuntInstances(): any {
@@ -67,20 +65,23 @@ export class HuntCounterComponent {
       pokemon: huntInstance.pokemon,
       method: huntInstance.method,
       found: huntInstance.found,
-      incrementer: this.createIncrementer(huntInstance)
+      incrementer: this.createIncrementer(huntInstance),
     };
   }
 
+  // gets rate from info passed by cookie, using rate-generation-service
   getRate(method: string, gen: string) {
     let rate = this.rateGenerationService.getSelectedRate(method, gen)
-    console.log(rate);
     if (!rate.includes('/')) {
       switch (method) {
-        case 'chain-fishing' || 'chain-fishing-charm':
+        case 'chain-fishing':
+        case 'chain-fishing-charm':
           return this.rateGenerationService.getChainFishingRate;
-        case 'sos-battle' || 'sos-battle-charm':
+        case 'sos-battle':
+        case 'sos-battle-charm':
           return this.rateGenerationService.getSOSRate;
         case 'poke-radar':
+        case 'poke-radar-charm':
           return this.rateGenerationService.getRadarRate;
         default:
           return 'Invalid Method';
@@ -88,9 +89,11 @@ export class HuntCounterComponent {
     }
     else {
       return rate;
-    }
+      };
+
   }
 
+  // creates incrementer object for each hunt instance
   createIncrementer(huntInstance: any): Incrementer {
     let rate = this.getRate(huntInstance.method, huntInstance.generation);
     let hasCharm = huntInstance.method.includes('charm');

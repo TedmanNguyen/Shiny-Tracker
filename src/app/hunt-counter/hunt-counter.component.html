@@ -1,7 +1,9 @@
+<!-- Test code, can be deleted/modified freely -->
 <div *ngFor="let huntCard of huntCards">
     <p> {{ huntCard.game }} </p>
     <p> {{ huntCard.method }} </p>
     <p> {{ huntCard.pokemon }} </p>
     <p> {{ huntCard.incrementer.rate }} </p>
     <p> {{ huntCard.incrementer.rateMethod }} </p>
+    <button (click)="increment(huntCard.incrementer)">Increment</button>
 </div>
