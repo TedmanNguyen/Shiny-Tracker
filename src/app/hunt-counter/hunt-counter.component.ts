@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service'; 
 import { HuntInstanceComponent } from '../hunt-instance/hunt-instance.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { RateGenerationService } from '../rate-generation.service';
 
 interface HuntCard {
   game: string;
   generation: string;
-  pokemon: string;
+  pokemon: Pokemon;
   method: string;
   found: boolean;
   incrementer: Incrementer;
@@ -20,10 +22,17 @@ interface Incrementer {
   hasCharm: boolean;
 }
 
+interface Pokemon {
+  name: string;
+  sprite: string;
+  spriteShiny: string;
+}
+
 @Component({
   selector: 'app-hunt-counter',
   standalone: true,
-  imports: [CommonModule, HuntInstanceComponent],
+  imports: [CommonModule, HuntInstanceComponent, MatCardModule, MatButtonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './hunt-counter.component.html',
   styleUrl: './hunt-counter.component.css'
 })
@@ -40,6 +49,7 @@ export class HuntCounterComponent {
     this.huntInstances = this.loadHuntInstances();
     for (let huntInstance of this.huntInstances) {
       this.huntCards.push(this.initializeCard(huntInstance));
+      
     }
   }
 
@@ -51,22 +61,42 @@ export class HuntCounterComponent {
     return [];
   }
 
+  saveHuntCards(): void {
+    this.cookieService.set('huntCards', JSON.stringify(this.huntCards));
+    console.log(this.huntCards);
+  }
+
+
+
   increment(incrementer: Incrementer): void {
     incrementer.encounters++;
     if (incrementer.rateMethod) {
       incrementer.rate = incrementer.rateMethod(incrementer.encounters, incrementer.hasCharm);
     }
+    
+    const huntCard = this.huntCards.find(card => card.incrementer === incrementer);
+    if (huntCard) {
+      huntCard.incrementer.encounters = incrementer.encounters;
+    }
+    this.saveHuntCards();
+
+
   }
 
   initializeCard(huntInstance: any): HuntCard {
     return {
       game: huntInstance.game,
       generation: huntInstance.generation,
-      pokemon: huntInstance.pokemon,
       method: huntInstance.method,
       found: huntInstance.found,
       incrementer: this.createIncrementer(huntInstance),
+      pokemon: {
+        name: huntInstance.pokemon.name,
+        sprite: huntInstance.pokemon.spriteUrl,
+        spriteShiny: huntInstance.pokemon.spriteShinyUrl
+      }
     };
+    
   }
 
   // gets rate from info passed by cookie, using rate-generation-service
