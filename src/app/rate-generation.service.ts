@@ -1,43 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import rateJSON from '../assets/shiny-methods.json';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RateGenerationService {
-  private jsonUrl = 'assets/shiny-methods.json';
 
   // for use to calculate gen iv radar rates
   private radarNumerators = [8, 9, 9, 9, 9, 10, 10, 10, 10, 11, 11, 11, 
                              12, 12, 13, 13, 14, 14, 15, 15, 16, 17, 18,
                              19, 20, 21, 22, 24, 26, 28, 30, 33, 37, 41, 
-                             47, 55, 66, 82, 110, 164, 328]
+                             47, 55, 66, 82, 110, 164, 328];
 
-
-  constructor(private http: HttpClient) {}
-
-  // obtains rates and outputs as a TS object
-  getRates(): Observable<{ data: any }> {
-    return this.http.get<any>(this.jsonUrl).pipe(
-      map(response => ({ data: response }))
-    );
+  constructor(private http: HttpClient) {
+    // ensures that getRadarRate refers to radarNumerators in this file
+    this.getRadarRate = this.getRadarRate.bind(this);
   }
 
   // returns the string corresponding to the selected rate from JSON
-  getSelectedRate(userMethod: string, userGen: string) {
-    // load rates fron JSON
-    this.getRates().subscribe(rates => {
-      // get the correct generation
-      let generation: Object = rates.data[userGen];
-
-      // find correct method in generation and get its rate
-      let rate = (generation as any)[userMethod]; 
-      
-      // returns the rate as a string, or undefined if invalid parameters
-      return rate;
-    });
+  getSelectedRate(userMethod: string, userGen: string): string {
+    let generation: Object = (rateJSON as any)[userGen];
+    return (generation as any)[userMethod] as string;
   }
 
   // calculates the rate for chain fishing
@@ -69,7 +53,9 @@ export class RateGenerationService {
   }
 
   //calculates the rate for generation iv Poke Radar
-  getRadarRate(chain: number) {
+  //hasCharm not used due to lack of info on charm's effect on radar
+  getRadarRate(chain: number, hasCharm: boolean) {
+    console.log(this.radarNumerators[1]);
     if (chain < 40) {
       return `${this.radarNumerators[chain]}/65536`;
     }
