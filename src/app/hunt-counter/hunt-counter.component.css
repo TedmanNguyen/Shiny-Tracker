@@ -1,0 +1,18 @@
+  .hunt-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .center-align {
+    text-align: center;
+  }
+  
+  .example-card {
+    width: 200px;
+  }
+  
+  .example-header-image {
+    /* background-image: url('path/to/your/avatar.jpg'); */
+    background-size: cover;
+  }
