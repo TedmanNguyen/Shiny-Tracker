@@ -65,7 +65,6 @@ export class HuntInstanceComponent {
     }
   }
 
-  // For Ted
   saveHuntInstances(): void {
     this.cookieService.set('huntInstances', JSON.stringify(this.huntInstances));
   }
@@ -200,16 +199,4 @@ export class HuntInstanceComponent {
   }
 
 }
-
-/*
-  ngOnInit(): void {
-    this.gameGenerationService.getGameGenerations().subscribe((data) => {
-      this.gameGenerations = Object.keys(data);
-    });
-    this.loadHuntInstances();
-  }
-  saveHuntInstances(): void {
-    this.cookieService.set('huntInstances', JSON.stringify(this.huntInstances));
-  }
-*/
 

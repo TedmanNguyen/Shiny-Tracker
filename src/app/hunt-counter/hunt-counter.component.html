@@ -1,13 +1,3 @@
-<!-- Test code, can be deleted/modified freely -->
-<div *ngFor="let huntCard of huntCards">
-    <p> {{ huntCard.game }} </p>
-    <p> {{ huntCard.method }} </p>
-    <p> {{ huntCard.pokemon.name }} </p>
-    <p> {{ huntCard.incrementer.rate }} </p>
-    <p> {{ huntCard.incrementer.rateMethod }} </p>
-    <button (click)="increment(huntCard.incrementer)">Increment</button>
-</div>
-
 <div class="hunt-cards-container">
     <mat-card *ngFor="let huntCard of huntCards" class="example-card">
         <mat-card-header>
@@ -18,8 +8,10 @@
         <img [src]="huntCard.pokemon.sprite" alt="Photo of a {{huntCard.pokemon.name}}">
         <mat-card-content>
             <p> Rate: {{ huntCard.incrementer.rate }} </p>
-            <p>   Encounters: {{ huntCard.incrementer.encounters }} </p> 
-            <p>   Found: {{ huntCard.found ? 'Yes' : 'No' }} </p>         
+            <p> Method: {{ huntCard.method }} </p>
+            <p> Encounters: {{ huntCard.incrementer.encounters }} </p> 
+            <p> Found: {{ huntCard.found ? 'Yes' : 'No' }} </p>
+            <button (click)="increment(huntCard.incrementer)">+</button>       
         </mat-card-content>
     </mat-card>
 </div>

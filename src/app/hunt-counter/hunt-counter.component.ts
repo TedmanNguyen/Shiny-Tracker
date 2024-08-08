@@ -49,6 +49,7 @@ export class HuntCounterComponent {
     this.huntInstances = this.loadHuntInstances();
     for (let huntInstance of this.huntInstances) {
       this.huntCards.push(this.initializeCard(huntInstance));
+      
     }
   }
 
@@ -60,11 +61,26 @@ export class HuntCounterComponent {
     return [];
   }
 
+  saveHuntCards(): void {
+    this.cookieService.set('huntCards', JSON.stringify(this.huntCards));
+    console.log(this.huntCards);
+  }
+
+
+
   increment(incrementer: Incrementer): void {
     incrementer.encounters++;
     if (incrementer.rateMethod) {
       incrementer.rate = incrementer.rateMethod(incrementer.encounters, incrementer.hasCharm);
     }
+    
+    const huntCard = this.huntCards.find(card => card.incrementer === incrementer);
+    if (huntCard) {
+      huntCard.incrementer.encounters = incrementer.encounters;
+    }
+    this.saveHuntCards();
+
+
   }
 
   initializeCard(huntInstance: any): HuntCard {
@@ -80,6 +96,7 @@ export class HuntCounterComponent {
         spriteShiny: huntInstance.pokemon.spriteShinyUrl
       }
     };
+    
   }
 
   // gets rate from info passed by cookie, using rate-generation-service
