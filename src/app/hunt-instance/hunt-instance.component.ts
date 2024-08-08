@@ -13,16 +13,11 @@ interface Pokemon {
   spriteUrl: string;
   spriteShinyUrl: string;
 }
-interface Method {
-  name: string;
-  rate: string;
-  encounters: number;
-}
 interface HuntInstance {
   game: string;
   generation: string;
   pokemon: Pokemon;
-  method: Method;
+  method: string;
   found: boolean;
 }
 
@@ -60,6 +55,14 @@ export class HuntInstanceComponent {
     this.gameGenerationService.getGameGenerations().subscribe((data) => {
       this.gameList = Object.keys(data);
     });
+    this.loadHuntInstances();
+  }
+
+  loadHuntInstances(): void {
+    const storedHuntInstances = this.cookieService.get('huntInstances');
+    if (storedHuntInstances) {
+      this.huntInstances = JSON.parse(storedHuntInstances);
+    }
   }
 
   // For Ted
@@ -178,25 +181,24 @@ export class HuntInstanceComponent {
           spriteUrl: this.spriteUrl,
           spriteShinyUrl: this.spriteShinyUrl,
         },
-        method: {
-          name: this.method,
-          rate: '', // Empty for now
-          encounters: 0,
-        },
+        method: this.method,
         found: false, // I am assuming this means if a shiny pokemon has been found ?
       };
 
       console.log(newHuntInstance);
-      // // Add the new hunt instance to the huntInstances array
-      // this.huntInstances.push(newHuntInstance);
 
-      // // Save the huntInstances array to cookies
-      // this.saveHuntInstances();
+
+      // Add the new hunt instance to the huntInstances array
+      this.huntInstances.push(newHuntInstance);
+
+      // Save the huntInstances array to cookies
+      this.saveHuntInstances();
 
       // Redirect the user to the homepage
-      // window.location.href = '';
+      window.location.href = '';
     }
   }
+
 }
 
 /*
@@ -209,11 +211,5 @@ export class HuntInstanceComponent {
   saveHuntInstances(): void {
     this.cookieService.set('huntInstances', JSON.stringify(this.huntInstances));
   }
-  loadHuntInstances(): void {
-    const storedHuntInstances = this.cookieService.get('huntInstances');
-    if (storedHuntInstances) {
-      this.huntInstances = JSON.parse(storedHuntInstances);
-    }
-  }
+*/
 
-  */

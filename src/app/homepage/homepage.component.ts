@@ -3,11 +3,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { HuntCounterComponent } from '../hunt-counter/hunt-counter.component';
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HuntCounterComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css',
 })

@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet, RouterModule } from '@angul
 import { ApiService } from './api.service';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HuntInstanceComponent } from './hunt-instance/hunt-instance.component';
+import { HuntCounterComponent } from './hunt-counter/hunt-counter.component';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { DomSanitizer } from "@angular/platform-browser";
 import { MatIconRegistry } from '@angular/material/icon';
@@ -12,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, RouterLink, RouterLinkActive, RouterModule,
-            HomepageComponent, HuntInstanceComponent, NavbarComponent],
+            HomepageComponent, HuntInstanceComponent, NavbarComponent, HuntCounterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [CookieService]

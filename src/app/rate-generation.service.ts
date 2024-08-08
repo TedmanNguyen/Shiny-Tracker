@@ -26,18 +26,21 @@ export class RateGenerationService {
   }
 
   // returns the string corresponding to the selected rate from JSON
-  getSelectedRate(userMethod: string, userGen: string) {
+  getSelectedRate(userMethod: string, userGen: string): string {
+    let rate: string = '';
     // load rates fron JSON
     this.getRates().subscribe(rates => {
       // get the correct generation
       let generation: Object = rates.data[userGen];
 
       // find correct method in generation and get its rate
-      let rate = (generation as any)[userMethod]; 
+      rate = (generation as any)[userMethod]; 
+      console.log('log1', rate);
       
-      // returns the rate as a string, or undefined if invalid parameters
-      return rate;
     });
+    // returns the rate as a string, or undefined if invalid parameters
+    console.log('log2', rate);
+    return rate;
   }
 
   // calculates the rate for chain fishing
