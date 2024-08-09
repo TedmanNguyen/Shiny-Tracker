@@ -11,7 +11,8 @@
             <p> Method: {{ huntCard.method }} </p>
             <p> Encounters: {{ huntCard.incrementer.encounters }} </p> 
             <p> Found: {{ huntCard.found ? 'Yes' : 'No' }} </p>
-            <button (click)="increment(huntCard.incrementer)">+</button>       
+            <button (click)="increment(huntCard.incrementer)">+</button>  
+            <button (click)="decrement(huntCard.incrementer)">-</button>      
         </mat-card-content>
     </mat-card>
 </div>

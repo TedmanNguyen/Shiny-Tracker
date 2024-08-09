@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service'; 
 import { HuntInstanceComponent } from '../hunt-instance/hunt-instance.component';
@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RateGenerationService } from '../rate-generation.service';
 
 interface HuntCard {
+  id: number;
   game: string;
   generation: string;
   pokemon: Pokemon;
@@ -16,6 +17,7 @@ interface HuntCard {
 }
 
 interface Incrementer {
+  id: number;
   encounters: number;
   rate: string;
   rateMethod: any;
@@ -39,17 +41,25 @@ interface Pokemon {
 export class HuntCounterComponent {
   huntInstances: any[] = [];  // array of hunt instances from cookie
   huntCards: HuntCard[] = []; // array of hunt cards to display
+  private beforeUnloadListener!: () => void;
 
   constructor(private cookieService: CookieService,
-              private rateGenerationService: RateGenerationService
+              private rateGenerationService: RateGenerationService,
+              private renderer: Renderer2
   ) {}
 
   // loads hunt instances from cookie and initializes all cards
   ngOnInit(): void {
     this.huntInstances = this.loadHuntInstances();
+    this.beforeUnloadListener = this.renderer.listen('window', 'beforeunload', this.saveHuntInstances.bind(this));
     for (let huntInstance of this.huntInstances) {
       this.huntCards.push(this.initializeCard(huntInstance));
-      
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.beforeUnloadListener) {
+      this.beforeUnloadListener();  // removes event listener
     }
   }
 
@@ -61,30 +71,43 @@ export class HuntCounterComponent {
     return [];
   }
 
-  saveHuntCards(): void {
-    this.cookieService.set('huntCards', JSON.stringify(this.huntCards));
-    console.log(this.huntCards);
+  loadHuntCards(): any {
+    const huntCardCookie = this.cookieService.get('huntCards');
+    if (huntCardCookie) {
+      return JSON.parse(huntCardCookie);
+    }
+    return [];
   }
 
-
+  saveHuntInstances(): void {
+    this.cookieService.set('huntInstances', JSON.stringify(this.huntInstances));
+  }
 
   increment(incrementer: Incrementer): void {
+    let corrInstance = this.huntInstances.find(instance => instance.id === incrementer.id)
     incrementer.encounters++;
+    corrInstance.encounters++;
+
     if (incrementer.rateMethod) {
       incrementer.rate = incrementer.rateMethod(incrementer.encounters, incrementer.hasCharm);
     }
-    
-    const huntCard = this.huntCards.find(card => card.incrementer === incrementer);
-    if (huntCard) {
-      huntCard.incrementer.encounters = incrementer.encounters;
+  }
+
+  decrement(incrementer: Incrementer): void {
+    if (incrementer.encounters >= 1) {
+      let corrInstance = this.huntInstances.find(instance => instance.id === incrementer.id)
+      incrementer.encounters--;
+      corrInstance.encounters--;
+
+      if (incrementer.rateMethod) {
+        incrementer.rate = incrementer.rateMethod(incrementer.encounters, incrementer.hasCharm);
+      }
     }
-    this.saveHuntCards();
-
-
   }
 
   initializeCard(huntInstance: any): HuntCard {
     return {
+      id: huntInstance.id,
       game: huntInstance.game,
       generation: huntInstance.generation,
       method: huntInstance.method,
@@ -130,7 +153,8 @@ export class HuntCounterComponent {
 
     if (typeof rate === 'string') {
       return {
-        encounters: 0,
+        id: huntInstance.id,
+        encounters: huntInstance.encounters,
         rate: rate,
         rateMethod: null,
         hasCharm: hasCharm
@@ -138,8 +162,9 @@ export class HuntCounterComponent {
     }
     else {
       return {
-        encounters: 0,
-        rate: rate(0, hasCharm),
+        id: huntInstance.id,
+        encounters: huntInstance.encounters,
+        rate: rate(huntInstance.encounters, hasCharm),
         rateMethod: rate,
         hasCharm: hasCharm
       };
