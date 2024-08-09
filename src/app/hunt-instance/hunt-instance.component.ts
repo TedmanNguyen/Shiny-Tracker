@@ -14,11 +14,13 @@ interface Pokemon {
   spriteShinyUrl: string;
 }
 interface HuntInstance {
+  id: number;
   game: string;
   generation: string;
   pokemon: Pokemon;
   method: string;
   found: boolean;
+  encounters: number;
 }
 
 @Component({
@@ -173,6 +175,7 @@ export class HuntInstanceComponent {
     const button = event.target as HTMLButtonElement;
     if (!button.disabled) {
       const newHuntInstance: HuntInstance = {
+        id: this.generateId(),
         game: this.game,
         generation: this.generation,
         pokemon: {
@@ -182,6 +185,7 @@ export class HuntInstanceComponent {
         },
         method: this.method,
         found: false, // I am assuming this means if a shiny pokemon has been found ?
+        encounters: 0,
       };
 
       console.log(newHuntInstance);
@@ -198,5 +202,13 @@ export class HuntInstanceComponent {
     }
   }
 
+  generateId(): number {
+    const ids = this.huntInstances.map((instance) => instance.id);
+    let newId: number;
+    do {
+      newId = Math.floor(Math.random() * 100000);
+    } while (ids.includes(newId));
+    return newId;
+  }
 }
 

@@ -55,7 +55,6 @@ export class RateGenerationService {
   //calculates the rate for generation iv Poke Radar
   //hasCharm not used due to lack of info on charm's effect on radar
   getRadarRate(chain: number, hasCharm: boolean) {
-    console.log(this.radarNumerators[1]);
     if (chain < 40) {
       return `${this.radarNumerators[chain]}/65536`;
     }
