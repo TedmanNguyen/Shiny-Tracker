@@ -12,10 +12,24 @@
       </select>
     </div>
     <div class="selector-group">
+      <p class="choose-game">Choose a pokemon:</p>
+      <mat-form-field>
+        <mtx-select
+          disableOptionCentering
+          [items]="pokemonList"
+          bindLabel="name"
+          bindValue="url"
+          appendTo="body"
+          (change)="onPokemonChange($event)"
+        >
+        </mtx-select>
+      </mat-form-field>
+    </div>
+    <div class="selector-group">
       <p class="choose-game">Choose a method:</p>
       <select
         class="selector"
-        [disabled]="!generation"
+        [disabled]="!generation || !pokemon.name"
         (change)="onMethodChange($event)"
       >
         <option value="">---</option>
@@ -24,28 +38,25 @@
         </option>
       </select>
     </div>
-    <div class="selector-group">
-      <p class="choose-game">Choose a pokemon:</p>
-      <input 
-        type="text" 
-        id="search-bar" 
-        [disabled]="!generation"
-        placeholder="Search for a pokemon" 
-        [(ngModel)]="pokemonSearchTerm"
-        (input)="onPokemonChange($event)"
-        
-      /> 
-      <p *ngIf="errorStatus === 404" class="error-message">Pokemon not found. Please try again.</p>
-      <div>
-        <img *ngIf="!spriteLoadError" [src]="spriteUrl" alt="pokemon sprite" (error)="onSpriteError()" />
-        <img *ngIf="!shinySpriteLoadError" [src]="spriteShinyUrl" alt="shiny pokemon sprite" (error)="onShinySpriteError()" />
-      </div>
-    </div>
+  </div>
+  <div class="images">
+    <img class="left"
+      *ngIf="!spriteLoadError"
+      [src]="spriteUrl"
+      alt="pokemon sprite"
+      (error)="onSpriteError()"
+    />
+    <img class="right"
+      *ngIf="!shinySpriteLoadError"
+      [src]="spriteShinyUrl"
+      alt="shiny pokemon sprite"
+      (error)="onShinySpriteError()"
+    />
   </div>
   <button
     class="start-button"
     (click)="onStartHunt($event)"
-    [disabled]="!game || !method || !pokemon"
+    [disabled]="!game || !method || (!pokemon.name && !pokemon.spriteUrl)"
   >
     START HUNT
   </button>

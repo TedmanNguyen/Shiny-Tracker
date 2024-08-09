@@ -10,3 +10,48 @@ body {
   background: linear-gradient(#ffffff, #d4d4d4);
   background-repeat: no-repeat;
 }
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+  background-color: rgb(227, 227, 227) !important;
+  margin-bottom: 0px;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  background-color: white !important;
+  transition: background-color 0.3s ease; /* Add transition for smooth effect */
+  margin-bottom: 0px;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option:hover {
+  background-color: rgb(
+    227,
+    227,
+    227
+  ) !important; /* Change background color on hover */
+  margin-bottom: 0px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  width: 65%;
+  background-color: white;
+  margin-bottom: 0px;
+}
+
+.mdc-text-field--outlined .ng-select,
+.mdc-text-field--no-label .ng-select {
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid gray;
+  height: 45px;
+  margin-bottom: 0px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #d9d9d9 !important;
+  margin-bottom: 0px;
+}
+
+.mat-mdc-form-field-subscript-wrapper,
+.mat-mdc-form-field-bottom-align::before {
+  display: none;
+}

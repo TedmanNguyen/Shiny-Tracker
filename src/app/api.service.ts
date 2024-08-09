@@ -3,20 +3,22 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-
   private baseUrl = 'https://pokeapi.co/api/v2/';
   gamesList: Observable<any>[] = [];
 
-  
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getPokemon(endpoint: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/pokemon/${endpoint}`);
   }
-  
+
+  getAllPokemon(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/pokemon/?limit=1400`);
+  }
+
   /*
   getVersionGroup(game: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/version/${game}`);
