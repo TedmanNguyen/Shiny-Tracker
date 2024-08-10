@@ -1,5 +1,5 @@
 import { ApiService } from './../api.service';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { GameGenerationService } from '../game-generation.service';
 import { GenerationMethodsService } from '../generation-methods.service';
 import { CookieService } from 'ngx-cookie-service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MtxSelectModule } from '@ng-matero/extensions/select';
 
 interface Pokemon {
   name: string;
@@ -26,7 +29,13 @@ interface HuntInstance {
 @Component({
   selector: 'app-hunt-instance',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MtxSelectModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+  ],
   templateUrl: './hunt-instance.component.html',
   styleUrls: ['./hunt-instance.component.css'],
 })
@@ -34,11 +43,15 @@ export class HuntInstanceComponent {
   gameList: string[] = []; // List of games
   game: string = ''; // Chosen game by user
   generation: string = ''; // Obtained from game selection
+
   methodList: string[] = []; // List of methods
   method: string = ''; // Chosen by user
-  pokemon: string = ''; // Chosen by user
+
+  pokemon: Pokemon = { name: '', spriteUrl: '', spriteShinyUrl: '' }; // Chosen by user
+  pokemonList: Pokemon[] = [];
   spriteUrl: string = ''; // Obtained from API
   spriteShinyUrl: string = ''; // Obtained from API
+
   huntInstances: HuntInstance[] = []; // Store instances for now
   errorMessage: string = '';
   pokemonSearchTerm: string = ''; // Search bar for pokemon
@@ -58,6 +71,13 @@ export class HuntInstanceComponent {
       this.gameList = Object.keys(data);
     });
     this.loadHuntInstances();
+
+    this.apiService.getAllPokemon().subscribe((data) => {
+      this.pokemonList = [
+        { name: '---', spriteUrl: '', spriteShinyUrl: '' },
+        ...data['results'],
+      ];
+    });
   }
 
   loadHuntInstances(): void {
@@ -81,7 +101,7 @@ export class HuntInstanceComponent {
           // sanitize methods in both HTML and TS
           this.method = '';
           this.methodList = [];
-          this.pokemon = '';
+          this.pokemon = { name: '', spriteUrl: '', spriteShinyUrl: '' };
           this.spriteUrl = '';
           this.spriteShinyUrl = '';
           this.pokemonSearchTerm = '';
@@ -105,7 +125,7 @@ export class HuntInstanceComponent {
       this.method = '';
       this.methodList = [];
       this.generation = '';
-      this.pokemon = '';
+      this.pokemon = { name: '', spriteUrl: '', spriteShinyUrl: '' };
       this.spriteUrl = '';
       this.spriteShinyUrl = '';
     }
@@ -124,10 +144,8 @@ export class HuntInstanceComponent {
     this.shinySpriteLoadError = true;
   }
 
-  onPokemonChange(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.pokemonSearchTerm = inputElement.value;
-
+  onPokemonChange(event: any): void {
+    this.pokemonSearchTerm = event.name;
     if (this.pokemonSearchTerm) {
       this.apiService
         .getPokemon(`${this.pokemonSearchTerm.toLowerCase()}`)
@@ -146,29 +164,33 @@ export class HuntInstanceComponent {
         )
         .subscribe((data) => {
           if (data) {
-            this.pokemon = data.name;
-            this.spriteUrl = data.sprites.other['official-artwork'].front_default;
-            this.spriteShinyUrl = data.sprites.other['official-artwork'].front_shiny;
+            this.pokemon = {
+              name: data.name,
+              spriteUrl: data.sprites.other['official-artwork'].front_default,
+              spriteShinyUrl:
+                data.sprites.other['official-artwork'].front_shiny,
+            };
+
+            this.spriteUrl =
+              data.sprites.other['official-artwork'].front_default;
+            this.spriteShinyUrl =
+              data.sprites.other['official-artwork'].front_shiny;
 
             this.errorStatus = null;
-            console.log(data);
-            console.log(this.spriteUrl);
-            console.log(this.spriteShinyUrl);
             this.spriteLoadError = false;
             this.shinySpriteLoadError = false;
-          }
-          else {
+          } else {
+            this.pokemon = { name: '', spriteUrl: '', spriteShinyUrl: '' };
             this.spriteUrl = '';
             this.spriteShinyUrl = '';
           }
         });
     } else {
-      this.pokemon = '';
+      this.pokemon = { name: '', spriteUrl: '', spriteShinyUrl: '' };
       this.spriteUrl = '';
       this.spriteShinyUrl = '';
       this.errorStatus = null;
     }
-
   }
 
   onStartHunt(event: Event): void {
@@ -179,7 +201,7 @@ export class HuntInstanceComponent {
         game: this.game,
         generation: this.generation,
         pokemon: {
-          name: this.pokemon,
+          name: this.pokemon.name,
           spriteUrl: this.spriteUrl,
           spriteShinyUrl: this.spriteShinyUrl,
         },
@@ -189,7 +211,6 @@ export class HuntInstanceComponent {
       };
 
       console.log(newHuntInstance);
-
 
       // Add the new hunt instance to the huntInstances array
       this.huntInstances.push(newHuntInstance);
@@ -201,7 +222,6 @@ export class HuntInstanceComponent {
       window.location.href = '';
     }
   }
-
   generateId(): number {
     const ids = this.huntInstances.map((instance) => instance.id);
     let newId: number;
@@ -211,4 +231,3 @@ export class HuntInstanceComponent {
     return newId;
   }
 }
-

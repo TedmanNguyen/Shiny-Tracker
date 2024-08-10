@@ -147,3 +147,32 @@
   background-color: #cccccc;
   cursor: not-allowed;
 }
+
+::ng-deep .mtx-select-panel {
+  background: white !important;
+}
+
+.images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none; /* Ensure images do not interfere with other elements */
+}
+
+.images img {
+  position: absolute;
+  width: 30%;
+  height: 40%;
+}
+.images img.left {
+  left: 0;
+}
+
+.images img.right {
+  right: 0;
+}
