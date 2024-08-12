@@ -49,8 +49,6 @@ export class HuntInstanceComponent {
 
   pokemon: Pokemon = { name: '', spriteUrl: '', spriteShinyUrl: '' }; // Chosen by user
   pokemonList: Pokemon[] = [];
-  spriteUrl: string = ''; // Obtained from API
-  spriteShinyUrl: string = ''; // Obtained from API
 
   huntInstances: HuntInstance[] = []; // Store instances for now
   errorMessage: string = '';
@@ -102,8 +100,6 @@ export class HuntInstanceComponent {
           this.method = '';
           this.methodList = [];
           this.pokemon = { name: '', spriteUrl: '', spriteShinyUrl: '' };
-          this.spriteUrl = '';
-          this.spriteShinyUrl = '';
           this.pokemonSearchTerm = '';
           this.errorStatus = null;
 
@@ -126,8 +122,6 @@ export class HuntInstanceComponent {
       this.methodList = [];
       this.generation = '';
       this.pokemon = { name: '', spriteUrl: '', spriteShinyUrl: '' };
-      this.spriteUrl = '';
-      this.spriteShinyUrl = '';
     }
   }
 
@@ -171,24 +165,15 @@ export class HuntInstanceComponent {
                 data.sprites.other['official-artwork'].front_shiny,
             };
 
-            this.spriteUrl =
-              data.sprites.other['official-artwork'].front_default;
-            this.spriteShinyUrl =
-              data.sprites.other['official-artwork'].front_shiny;
-
             this.errorStatus = null;
             this.spriteLoadError = false;
             this.shinySpriteLoadError = false;
           } else {
             this.pokemon = { name: '', spriteUrl: '', spriteShinyUrl: '' };
-            this.spriteUrl = '';
-            this.spriteShinyUrl = '';
           }
         });
     } else {
       this.pokemon = { name: '', spriteUrl: '', spriteShinyUrl: '' };
-      this.spriteUrl = '';
-      this.spriteShinyUrl = '';
       this.errorStatus = null;
     }
   }
@@ -202,8 +187,8 @@ export class HuntInstanceComponent {
         generation: this.generation,
         pokemon: {
           name: this.pokemon.name,
-          spriteUrl: this.spriteUrl,
-          spriteShinyUrl: this.spriteShinyUrl,
+          spriteUrl: this.pokemon.spriteUrl,
+          spriteShinyUrl: this.pokemon.spriteShinyUrl,
         },
         method: this.method,
         found: false, // I am assuming this means if a shiny pokemon has been found ?
