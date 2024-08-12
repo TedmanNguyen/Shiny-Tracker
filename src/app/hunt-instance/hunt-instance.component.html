@@ -42,13 +42,13 @@
   <div class="images">
     <img class="left"
       *ngIf="!spriteLoadError"
-      [src]="spriteUrl"
+      [src]="pokemon.spriteUrl"
       alt="pokemon sprite"
       (error)="onSpriteError()"
     />
     <img class="right"
       *ngIf="!shinySpriteLoadError"
-      [src]="spriteShinyUrl"
+      [src]="pokemon.spriteShinyUrl"
       alt="shiny pokemon sprite"
       (error)="onShinySpriteError()"
     />

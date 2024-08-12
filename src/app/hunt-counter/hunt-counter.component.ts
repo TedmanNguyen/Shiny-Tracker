@@ -1,9 +1,11 @@
-import { ChangeDetectionStrategy, Component, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Renderer2, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service'; 
 import { HuntInstanceComponent } from '../hunt-instance/hunt-instance.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIcon } from '@angular/material/icon';
 import { RateGenerationService } from '../rate-generation.service';
 
 interface HuntCard {
@@ -33,12 +35,13 @@ interface Pokemon {
 @Component({
   selector: 'app-hunt-counter',
   standalone: true,
-  imports: [CommonModule, HuntInstanceComponent, MatCardModule, MatButtonModule],
+  imports: [CommonModule, HuntInstanceComponent, MatCardModule, MatButtonModule,
+            MatChipsModule, MatIcon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './hunt-counter.component.html',
   styleUrl: './hunt-counter.component.css'
 })
-export class HuntCounterComponent {
+export class HuntCounterComponent implements OnInit, OnDestroy {
   huntInstances: any[] = [];  // array of hunt instances from cookie
   huntCards: HuntCard[] = []; // array of hunt cards to display
   private beforeUnloadListener!: () => void;
