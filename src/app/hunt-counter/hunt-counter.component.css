@@ -1,15 +1,23 @@
-  .hunt-cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-  }
+.hunt-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
 
-  
-  .example-card {
-    width: 200px;
-  }
-  
-  .example-header-image {
-    /* background-image: url('path/to/your/avatar.jpg'); */
-    background-size: cover;
-  }
+
+.example-card {
+  width: 200px;
+  padding: 0.5em;
+}
+
+.example-header-image {
+  /* background-image: url('path/to/your/avatar.jpg'); */
+  background-size: cover;
+}
+
+mat-card-footer {
+  margin-top: 1em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

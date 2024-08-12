@@ -4,6 +4,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { HuntInstanceComponent } from '../hunt-instance/hunt-instance.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIcon } from '@angular/material/icon';
 import { RateGenerationService } from '../rate-generation.service';
 
 interface HuntCard {
@@ -33,7 +35,8 @@ interface Pokemon {
 @Component({
   selector: 'app-hunt-counter',
   standalone: true,
-  imports: [CommonModule, HuntInstanceComponent, MatCardModule, MatButtonModule],
+  imports: [CommonModule, HuntInstanceComponent, MatCardModule, MatButtonModule,
+            MatChipsModule, MatIcon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './hunt-counter.component.html',
   styleUrl: './hunt-counter.component.css'
