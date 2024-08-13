@@ -17,7 +17,10 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 - [x] Readme that helps people how to install the program
 
 ### Flow of Control: 
+![Flow of Control](https://github.com/TedmanNguyen/soseproject/blob/main/User%20Flow%20of%20Control.png)
 
+### Home Page Mockup:
+![HomePage Mockup]
 
 ### Resources: 
 - 3 Computer Science Students w/ meeting virtually
