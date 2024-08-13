@@ -11,18 +11,19 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 
 # Running This Website: <img src="https://github.com/user-attachments/assets/6ba0a6f6-caf6-4904-9641-b40657f021b3" alt="jigglypuff" width="50" /> 
 Make sure to install dependencies before downloading the repo. Note that, upon running the website locally, the file size will approximately be 350mb. 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2, [Node.js v20.16.0](https://nodejs.org/en)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2, [Node.js v20.16.0](https://nodejs.org/en). Below are instructions for Windows 10 / 11. 
 
-### A. Install Dependencies
+### A. Install Dependencies:
 1. Download and install [Nodejs](https://nodejs.org/en).
+2. Download and install a Integrated Development Environment. e.g. [Visual Studio Code](https://code.visualstudio.com/download). 
 
-### B. Download the Repo
+### B. Download the Repo:
 1. Click on "<> Code" in the top right corner of the repository.
 2. Click on the "Local" tab.
 3. Click on "Download ZIP" and extract.
 
-### C. Load the server
-1. Open your integrated development environment, e.g. Visual Studio Code. 
+### C. Load the server:
+1. Open your integrated development environment
 2. In your IDE, open the folder and, using the terminal, navigate to the root folder.
 3. In your terminal, run $ `npm install`.
 4. Followed by $ `ng serve` to load dev server.
