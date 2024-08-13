@@ -17,10 +17,13 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 - [x] Readme that helps people how to install the program
 
 ### Flow of Control: 
-![Flow of Control](https://github.com/TedmanNguyen/soseproject/blob/main/User%20Flow%20of%20Control.png)
+<img src="https://github.com/TedmanNguyen/soseproject/blob/main/User%20Flow%20of%20Control.png" alt="Flow of Control" width ="1000" />
 
 ### Home Page Mockup:
-![HomePage Mockup]
+<img src="https://github.com/TedmanNguyen/soseproject/blob/main/Homepage%20Mockup.png" alt="Home Page Mockup" width="400"/>
+
+### Hunt Mockup:
+<img src="https://github.com/TedmanNguyen/soseproject/blob/main/Hunt%20Instance%20Mockup.png" alt="Hunt Mockup" width="400"/>
 
 ### Resources: 
 - 3 Computer Science Students w/ meeting virtually
@@ -60,14 +63,11 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 | Week 2: 8/5 - 8/9 | <ul><li>- [x] Create Multiple Hunt Instances </li><li>- [x] Store Hunt in stances into cookies </li><li>- [x] Define Methods and their rates </li><li>- [x] Retrieve Rates depending on generation </li><li>- [x] Data persistance between sessions w/ encounters| 
 | Week 3: 8/12 - 8/16 | <ul><li>- [x] Found button </li><li>- [x] Delete Hunt Instance button </li><li>- [x] Cleanup code and Fix UI issues </li><li>- [x] Resolve bugs </li><li>- [x] **Deliverable**: Video Demo </li><li>- [x] **Deliverable**: Readme file | 
 
-
-
-
-
-
 ## Development server
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.  
+
+Run `ng serve` for a dev server. 
+Navigate to `http://localhost:4200/`. 
 
 ## Code scaffolding
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
