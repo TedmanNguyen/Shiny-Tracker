@@ -10,9 +10,7 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 
 
 
-## Project Design:
-
-### Deliverables:
+## Deliverables:
 - [x] Flow of Control for User actions
 - [x] Wireframe / Mockup that demonstrates the UI/UX
 - [x] Video demo of functional website on local machine
@@ -28,6 +26,7 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 - Github Copilot 
 - Angular Library  
 
+## Scope:
 
 ### In-Scope:
 1. Allow the user to create an instance of a hunt, which comes with drop down menus and buttons to select the game they’re playing, methods used, whether they have the Shiny Charm, and pokemon they’re hunting
@@ -50,7 +49,7 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 2. Storing Information from API response to be used again during single instance of hunt
 3. Data persistence between hunts
 
-### Roadmap & Milestones:
+## Roadmap & Milestones:
 | Timeline | To-do |
 | ----------- | ----------- |
 | Week 0: 7/22 - 7/26 | <ul><li>- [x] Choose a project idea </li><li>- [x] Learn basics of Angular, CSS, HTML
@@ -61,21 +60,12 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 
 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+
 
 ## Development server
-
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
-
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-=======
-# soseproject
-Summer Open-Source Experience Project using Angular 
->>>>>>> 785b1e621fca1d7430d81e56a3d6f1993aac87f0
