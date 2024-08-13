@@ -16,14 +16,20 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 - [x] Video demo of functional website on local machine
 - [x] Readme that helps people how to install the program
 
-### [Flow of Control](https://github.com/TedmanNguyen/soseproject/blob/main/User%20Flow%20of%20Control.png): 
+### Flow of Control:
+<p align="center">
 <img src="https://github.com/TedmanNguyen/soseproject/blob/main/User%20Flow%20of%20Control.png" alt="Flow of Control" width ="400" />
+</p>
 
-### [Home Page Mockup](https://github.com/TedmanNguyen/soseproject/blob/main/Homepage%20Mockup.png):
+### Home Page Mockup:
+<p align="center">
 <img src="https://github.com/TedmanNguyen/soseproject/blob/main/Homepage%20Mockup.png" alt="Home Page Mockup" width="400"/>
+</p>
 
-### [Hunt Mockup](https://github.com/TedmanNguyen/soseproject/blob/main/Hunt%20Instance%20Mockup.png):
+### Hunt Mockup:
+<p align="center">
 <img src="https://github.com/TedmanNguyen/soseproject/blob/main/Hunt%20Instance%20Mockup.png" alt="Hunt Mockup" width="400"/>
+</p>
 
 ### Resources: 
 - 3 Computer Science Students w/ meeting virtually
