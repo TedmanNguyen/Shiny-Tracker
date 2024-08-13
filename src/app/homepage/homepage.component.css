@@ -1,5 +1,13 @@
+body {
+  overflow: auto; /* Enable scrolling */
+  height: 100vh; /* Ensure the body takes the full viewport height */
+  background-size: 100vh;
+  background: linear-gradient(#ffffff, #d4d4d4);
+}
+
 .title-screen {
   margin: 60px 60px;
+  overflow: auto; /* Enable scrolling within the title screen if needed */
 }
 
 .welcome-text {
