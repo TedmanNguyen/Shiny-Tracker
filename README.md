@@ -1,9 +1,6 @@
 # Shiny Tracker
 Shiny Tracker is a website designed to help Pokemon players catch shiny Pokemon.   
 
->>>>> include photo
-
-
 Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) and [sezavala](https://github.com/sezavala), during our time as a Software Intern w/ CodeDay & Computing Talent Intiative. 
 
 ### 🎥 Demo Video: 
@@ -69,12 +66,21 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 | Week 2: 8/5 - 8/9 | <ul><li>- [x] Create Multiple Hunt Instances </li><li>- [x] Store Hunt in stances into cookies </li><li>- [x] Define Methods and their rates </li><li>- [x] Retrieve Rates depending on generation </li><li>- [x] Data persistance between sessions w/ encounters| 
 | Week 3: 8/12 - 8/16 | <ul><li>- [x] Found button </li><li>- [x] Delete Hunt Instance button </li><li>- [x] Cleanup code and Fix UI issues </li><li>- [x] Resolve bugs </li><li>- [x] **Deliverable**: Video Demo </li><li>- [x] **Deliverable**: Readme file | 
 
-## Development server
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.  
+## To Use this Website:
+Make sure to install dependencies before downloading the repo. Note that, upon running the website locally, the file size will approximately be 350mb. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
 
-Run `ng serve` for a dev server. 
-Navigate to `http://localhost:4200/`. 
+### A. Install Dependencies
+1. Download and install [Nodejs](https://nodejs.org/en).
 
-## Code scaffolding
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### B. Download the Repo
+1. Click on "<> Code" in the top right corner of the repository.
+2. Click on the "Local" tab.
+3. Click on "Download ZIP" and extract.
+
+### C. Load the server
+1. Open your integrated development environment, e.g. Visual Studio Code. 
+2. In your IDE, open the folder and, using the terminal, navigate to the root folder.
+3. In your terminal, run $ `npm install`
+4. Followed by $ `ng serve` to load dev server.
+5. Navigate to `http://localhost:4200/`.
 
