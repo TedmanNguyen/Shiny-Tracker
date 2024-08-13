@@ -165,10 +165,9 @@
 }
 
 .images img {
-  position: absolute;
   width: 40%;
   height: 40%;
-  object-fit: contain;
+  object-fit: scale-down;
 }
 .images img.left {
   left: 0;
