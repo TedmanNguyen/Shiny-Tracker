@@ -3,7 +3,7 @@ This website is designed to help Pokemon players catch shiny Pokemon.
 
 Shiny Pokemon are a special variant from the regular Pokemon, featuring a different color scheme and battle animation. The odds of encountering one are extremely low (1 in 8192 in some games). Player can keep track of their hunts, their chances of finding a shiny, and mark when they are found.   
 
-Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) and [sezavala](https://github.com/sezavala), during our time as a Software Intern w/ CodeDay & Computing Talent Intiative. 
+Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) and [sezavala](https://github.com/sezavala), during our time as a Software Intern w/ CodeDay & Computing Talent Intiative. Our mentor was Principal Software Engineer [Milton Wong](https://www.linkedin.com/in/miltonwong2000/).
 
 ### 🎥 Demo Video: 
 
