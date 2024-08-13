@@ -2,13 +2,12 @@
 
 html,
 body {
-  height: 100vh;
-}
-body {
+  height: 100%;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background: linear-gradient(#ffffff, #d4d4d4);
   background-repeat: no-repeat;
+  overflow: auto; /* Prevent overflow */
 }
 
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
