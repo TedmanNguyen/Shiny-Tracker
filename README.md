@@ -1,19 +1,17 @@
-# Shiny Tracker
-This website is designed to help Pokemon players catch shiny Pokemon.
+# Shiny Tracker <img src="https://github.com/user-attachments/assets/2caacbe4-c4f0-4b6c-b9f6-0de1744bf244" alt="pikachu" width ="50" />  
+This website is designed to help Pokemon players catch shiny Pokemon.  
 
-Shiny Pokemon are a special variant from the regular Pokemon, featuring a different color scheme and battle animation. The odds of encountering one are extremely low (1 in 8192 in some games). Player can keep track of their hunts, their chances of finding a shiny, and mark when they are found. 
+Shiny Pokemon are a special variant from the regular Pokemon, featuring a different color scheme and battle animation. The odds of encountering one are extremely low (1 in 8192 in some games). Player can keep track of their hunts, their chances of finding a shiny, and mark when they are found.   
 
 Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) and [sezavala](https://github.com/sezavala), during our time as a Software Intern w/ CodeDay & Computing Talent Intiative. 
 
 ### 🎥 Demo Video: 
 
+### 📷 Screenshots: 
 
-
-## To Use this Website:
+# Running This Website: <img src="https://github.com/user-attachments/assets/6ba0a6f6-caf6-4904-9641-b40657f021b3" alt="jigglypuff" width="50" /> 
 Make sure to install dependencies before downloading the repo. Note that, upon running the website locally, the file size will approximately be 350mb. 
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
-
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2, [Node.js v20.16.0](https://nodejs.org/en)
 
 ### A. Install Dependencies
 1. Download and install [Nodejs](https://nodejs.org/en).
@@ -26,31 +24,23 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ### C. Load the server
 1. Open your integrated development environment, e.g. Visual Studio Code. 
 2. In your IDE, open the folder and, using the terminal, navigate to the root folder.
-3. In your terminal, run $ `npm install`
+3. In your terminal, run $ `npm install`.
 4. Followed by $ `ng serve` to load dev server.
 5. Navigate to `http://localhost:4200/`.
 
+### D. How to Use:
+1. Start a hunt by clicking on "Start".
+2. Select your generation, pokemon, and the method to catch the pokemon.
+3. Repeat for more hunts.
 
-## Deliverables:
+# Project Design:  <img src="https://github.com/user-attachments/assets/f4ee7f29-726c-421a-8efd-7b233e4fb6f9" alt="wobbuffet" width="50" />  
+
+### Deliverables:
 - [x] Flow of Control for User actions
 - [x] Wireframe / Mockup that demonstrates the UI/UX
 - [x] Video demo of functional website on local machine
 - [x] Readme that helps people how to install the program
 
-### Flow of Control:
-<p align="center">
-<img src="https://github.com/TedmanNguyen/soseproject/blob/main/User%20Flow%20of%20Control.png" alt="Flow of Control" width ="400" />
-</p>
-
-### Home Page Mockup:
-<p align="center">
-<img src="https://github.com/TedmanNguyen/soseproject/blob/main/Homepage%20Mockup.png" alt="Home Page Mockup" width="400"/>
-</p>
-
-### Hunt Mockup:
-<p align="center">
-<img src="https://github.com/TedmanNguyen/soseproject/blob/main/Hunt%20Instance%20Mockup.png" alt="Hunt Mockup" width="400"/>
-</p>
 
 ### Resources: 
 - 3 Computer Science Students w/ meeting virtually
@@ -89,5 +79,20 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 | Week 1: 7/29 - 8/2 | <ul><li>- [x] **Deliverable**: Create Flow of Control for User Actions </li><li>- [x] **Deliverable**: Create Wireframe for UI/UX </li><li>- [x] Create a homepage </li><li>- [x] Get a successful API Response. </li><li>- [x] Create a hunt instance </li><li>- [x] Get Pokemon Sprites from API </li><li>- [x] Create a Shiny Hunt Info Page|
 | Week 2: 8/5 - 8/9 | <ul><li>- [x] Create Multiple Hunt Instances </li><li>- [x] Store Hunt in stances into cookies </li><li>- [x] Define Methods and their rates </li><li>- [x] Retrieve Rates depending on generation </li><li>- [x] Data persistance between sessions w/ encounters| 
 | Week 3: 8/12 - 8/16 | <ul><li>- [x] Found button </li><li>- [x] Delete Hunt Instance button </li><li>- [x] Cleanup code and Fix UI issues </li><li>- [x] Resolve bugs </li><li>- [x] **Deliverable**: Video Demo </li><li>- [x] **Deliverable**: Readme file | 
+
+### Flow of Control:
+<p align="center">
+<img src="https://github.com/TedmanNguyen/soseproject/blob/main/User%20Flow%20of%20Control.png" alt="Flow of Control" width ="400" />
+</p>
+
+### Home Page Mockup:
+<p align="center">
+<img src="https://github.com/TedmanNguyen/soseproject/blob/main/Homepage%20Mockup.png" alt="Home Page Mockup" width="400"/>
+</p>
+
+### Hunt Mockup:
+<p align="center">
+<img src="https://github.com/TedmanNguyen/soseproject/blob/main/Hunt%20Instance%20Mockup.png" alt="Hunt Mockup" width="400"/>
+</p>
 
 
