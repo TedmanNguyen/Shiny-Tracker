@@ -1,4 +1,4 @@
-# Shiny Tracker <img src="./readme-assets/pikachu" alt="pikachu" width ="50" />  
+# Shiny Tracker <img src="./readme-assets/pikachu.png" alt="pikachu" width ="50" />  
 This website is designed to help Pokemon players catch shiny Pokemon.  
 
 Shiny Pokemon are a special variant from the regular Pokemon, featuring a different color scheme and battle animation. The odds of encountering one are extremely low (1 in 8192 in some games). Player can keep track of their hunts, their chances of finding a shiny, and mark when they are found.   
