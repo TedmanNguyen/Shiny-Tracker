@@ -8,9 +8,8 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 ## 🎥 Demo Videos: 
 ### Infopage:
 <p align="center">
-<video src="./readme-assets/infopage.mp4" alt="Video demo of the infopage" width="900" />
+<video src="./readme-assets/infopage.mp4" width=900></video>
 </p>
-
 
 ## 📷 Screenshots: 
 
