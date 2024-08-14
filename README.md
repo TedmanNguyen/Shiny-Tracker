@@ -5,9 +5,14 @@ Shiny Pokemon are a special variant from the regular Pokemon, featuring a differ
 
 Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) and [sezavala](https://github.com/sezavala), during our time as a Software Intern w/ CodeDay & Computing Talent Intiative. Our mentor was Principal Software Engineer [Milton Wong](https://www.linkedin.com/in/miltonwong2000/).
 
-### 🎥 Demo Video: 
+## 🎥 Demo Videos: 
+### Infopage:
+<p align="center">
+<video src="./readme-assets/infopage.mp4" alt="Video demo of the infopage" width="900" />
+</p>
 
-### 📷 Screenshots: 
+
+## 📷 Screenshots: 
 
 # Running This Website: <img src="./readme-assets/jigglypuff.png" alt="jigglypuff" width="50" /> 
 Make sure to install dependencies before downloading the repo. Note that, upon running the website locally, the file size will approximately be 350mb. 
@@ -36,14 +41,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Project Design:  <img src="./readme-assets/wobuffet.png" alt="wobbuffet" width="50" />  
 
-### Deliverables:
+## Deliverables:
 - [x] Flow of Control for User actions
 - [x] Wireframe / Mockup that demonstrates the UI/UX
 - [x] Video demo of functional website on local machine
 - [x] Readme that helps people how to install the program
 
 
-### Resources: 
+## Resources: 
 - 3 Computer Science Students w/ meeting virtually
 - 20 hours per week per student for 3 weeks
 - 1 Software Engineering Mentor  
@@ -64,11 +69,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 2. Tracking the amount of time that the user has spent on hunting for that pokemon
 3. Specific checks on whether a Pokemon can be obtained by the method chosen. Example: shiny legendary Pokemon cannot be obtained by Masuda Method since they cannot be hatched from eggs
 
-### Constraints:
+## Constraints:
 1. Must be Complete by August 16, 2024.
 2. Limited Understanding of Angular & Typescript after working with these technologies on an [Oppia](https://github.com/sezavala/oppia), an open-source project
    
-### Requirements:
+## Requirements:
 1. Utilizing API Calls to retrieve Pokemons and Pokemon Images available
 2. Storing Information from API response to be used again during single instance of hunt
 3. Data persistence between hunts
@@ -81,19 +86,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 | Week 2: 8/5 - 8/9 | <ul><li>- [x] Create Multiple Hunt Instances </li><li>- [x] Store Hunt in stances into cookies </li><li>- [x] Define Methods and their rates </li><li>- [x] Retrieve Rates depending on generation </li><li>- [x] Data persistance between sessions w/ encounters| 
 | Week 3: 8/12 - 8/16 | <ul><li>- [x] Found button </li><li>- [x] Delete Hunt Instance button </li><li>- [x] Cleanup code and Fix UI issues </li><li>- [x] Resolve bugs </li><li>- [x] **Deliverable**: Video Demo </li><li>- [x] **Deliverable**: Readme file | 
 
+## UI Design:
+
 ### Flow of Control:
 <p align="center">
-<img src="./readme-assets/User Flow of Control.png" alt="Flow of Control" width ="400" />
+<img src="./readme-assets/User Flow of Control.png" alt="Flow of Control" width ="600" />
 </p>
 
 ### Home Page Mockup:
 <p align="center">
-<img src="/readme-assets/Homepage Mockup.png" alt="Home Page Mockup" width="400"/>
+<img src="./readme-assets/Homepage Mockup.png" alt="Home Page Mockup" width="600"/>
 </p>
 
 ### Hunt Mockup:
 <p align="center">
-<img src="/readme-assets/Hunt Instance Mockup.png" alt="Hunt Mockup" width="400"/>
+<img src="./readme-assets/Hunt Instance Mockup.png" alt="Hunt Mockup" width="600"/>
 </p>
 
 # Credits:
