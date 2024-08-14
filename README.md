@@ -11,6 +11,10 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 https://github.com/user-attachments/assets/a88a9146-fd9c-4709-b225-4eba75cfb3d5
 
 ## 📷 Screenshots: 
+### Creating a Hunt
+<p align="center">
+<img src="./readme-assets/hunt-init.png" alt="Creating a Hunt" width ="600" />
+</p>
 
 # Running This Website: <img src="./readme-assets/jigglypuff.png" alt="jigglypuff" width="50" /> 
 Make sure to install dependencies before downloading the repo. Note that, upon running the website locally, the file size will approximately be 350mb. 

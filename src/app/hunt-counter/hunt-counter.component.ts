@@ -88,9 +88,12 @@ export class HuntCounterComponent implements OnInit, OnDestroy {
   }
 
   removeHuntInstance(huntCard: HuntCard): void {
-    this.huntInstances = this.huntInstances.filter(instance => instance.id !== huntCard.id);
-    this.huntCards = this.huntCards.filter(card => card.id !== huntCard.id);
-    this.saveHuntInstances();
+    if (confirm("Are you sure you want to delete the counter for " + huntCard.pokemon.name + "?")) {
+      this.huntInstances = this.huntInstances.filter(instance => instance.id !== huntCard.id);
+      this.huntCards = this.huntCards.filter(card => card.id !== huntCard.id);
+      this.saveHuntInstances();
+    }
+    // else do nothing
   }
 
   increment(incrementer: Incrementer): void {
