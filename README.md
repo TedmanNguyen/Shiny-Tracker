@@ -96,4 +96,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <img src="/readme-assets/Hunt Instance Mockup.png" alt="Hunt Mockup" width="400"/>
 </p>
 
+# Credits:
+Pokemon and Pokemon character names are trademarks of the Pokemon Company.
 
+Special thanks to [PokeAPI](https://pokeapi.co/), which was used for the retrieval of games and Pokemon.
