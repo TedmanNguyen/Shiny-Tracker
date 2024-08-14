@@ -4,6 +4,9 @@
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{ huntCard.pokemon.name }}</mat-card-title>
             <mat-card-subtitle> {{ huntCard.game }}</mat-card-subtitle>
+            <button mat-icon-button (click)="removeHuntInstance(huntCard)">
+                <mat-icon>delete</mat-icon>
+            </button>
         </mat-card-header>
         <img [src]="huntCard.found ? huntCard.pokemon.spriteShiny : huntCard.pokemon.sprite"
              alt="Photo of a {{huntCard.pokemon.name}}">
@@ -20,7 +23,8 @@
             <button mat-fab (click)="decrement(huntCard.incrementer)">
                 <mat-icon fontIcon="remove"></mat-icon>
             </button>
-            <button mat-fab extended (click)="huntCard.found=!huntCard.found" class="found-button">
+            <button mat-fab extended 
+                (click)="toggleFound(huntCard)" class="found-button">
                 <mat-icon>star</mat-icon> Found!
             </button>
         </mat-card-footer>

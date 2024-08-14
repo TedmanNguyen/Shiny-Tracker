@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Renderer2, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import confetti from 'canvas-confetti';
 import { CookieService } from 'ngx-cookie-service'; 
 import { HuntInstanceComponent } from '../hunt-instance/hunt-instance.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -86,6 +87,12 @@ export class HuntCounterComponent implements OnInit, OnDestroy {
     this.cookieService.set('huntInstances', JSON.stringify(this.huntInstances));
   }
 
+  removeHuntInstance(huntCard: HuntCard): void {
+    this.huntInstances = this.huntInstances.filter(instance => instance.id !== huntCard.id);
+    this.huntCards = this.huntCards.filter(card => card.id !== huntCard.id);
+    this.saveHuntInstances();
+  }
+
   increment(incrementer: Incrementer): void {
     let corrInstance = this.huntInstances.find(instance => instance.id === incrementer.id)
     incrementer.encounters++;
@@ -107,6 +114,8 @@ export class HuntCounterComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+
 
   initializeCard(huntInstance: any): HuntCard {
     return {
@@ -173,5 +182,41 @@ export class HuntCounterComponent implements OnInit, OnDestroy {
       };
     }
   }
+  toggleFound(huntCard: HuntCard)
+  {
+    huntCard.found = !huntCard.found;
+    if (huntCard.found) {
+      this.launchConfetti();
+    }
+  }
+  launchConfetti() {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      angle: 315,
+      origin: { x: 0, y: 0 }
+    });
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      angle: 225,
+      origin: { x: 1, y: 0 }
+    });
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      angle: 45,
+      origin: { x: 0, y: 1 }
+    });
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      angle: 135, 
+      origin: { x: 1, y: 1 }
+    });
+  }
+  
+
 }
+
 
