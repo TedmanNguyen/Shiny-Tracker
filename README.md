@@ -1,4 +1,4 @@
-# Shiny Tracker <img src="https://github.com/user-attachments/assets/2caacbe4-c4f0-4b6c-b9f6-0de1744bf244" alt="pikachu" width ="50" />  
+# Shiny Tracker <img src="./readme-assets/pikachu" alt="pikachu" width ="50" />  
 This website is designed to help Pokemon players catch shiny Pokemon.  
 
 Shiny Pokemon are a special variant from the regular Pokemon, featuring a different color scheme and battle animation. The odds of encountering one are extremely low (1 in 8192 in some games). Player can keep track of their hunts, their chances of finding a shiny, and mark when they are found.   
@@ -9,7 +9,7 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 
 ### 📷 Screenshots: 
 
-# Running This Website: <img src="https://github.com/user-attachments/assets/6ba0a6f6-caf6-4904-9641-b40657f021b3" alt="jigglypuff" width="50" /> 
+# Running This Website: <img src="./readme-assets/jigglypuff.png" alt="jigglypuff" width="50" /> 
 Make sure to install dependencies before downloading the repo. Note that, upon running the website locally, the file size will approximately be 350mb. 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2, [Node.js v20.16.0](https://nodejs.org/en). Below are instructions for Windows 10 / 11. 
 
@@ -34,7 +34,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 2. Select your generation, pokemon, and the method to catch the pokemon.
 3. Repeat for more hunts.
 
-# Project Design:  <img src="https://github.com/user-attachments/assets/f4ee7f29-726c-421a-8efd-7b233e4fb6f9" alt="wobbuffet" width="50" />  
+# Project Design:  <img src="./readme-assets/wobuffet.png" alt="wobbuffet" width="50" />  
 
 ### Deliverables:
 - [x] Flow of Control for User actions
@@ -83,17 +83,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Flow of Control:
 <p align="center">
-<img src="https://github.com/TedmanNguyen/soseproject/blob/main/User%20Flow%20of%20Control.png" alt="Flow of Control" width ="400" />
+<img src="./readme-assets/User Flow of Control.png" alt="Flow of Control" width ="400" />
 </p>
 
 ### Home Page Mockup:
 <p align="center">
-<img src="https://github.com/TedmanNguyen/soseproject/blob/main/Homepage%20Mockup.png" alt="Home Page Mockup" width="400"/>
+<img src="/readme-assets/Homepage Mockup.png" alt="Home Page Mockup" width="400"/>
 </p>
 
 ### Hunt Mockup:
 <p align="center">
-<img src="https://github.com/TedmanNguyen/soseproject/blob/main/Hunt%20Instance%20Mockup.png" alt="Hunt Mockup" width="400"/>
+<img src="/readme-assets/Hunt Instance Mockup.png" alt="Hunt Mockup" width="400"/>
 </p>
 
 
