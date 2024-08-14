@@ -7,9 +7,8 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 
 ## 🎥 Demo Videos: 
 ### Infopage:
-<p align="center">
-<video src="./readme-assets/infopage.mp4" width=900></video>
-</p>
+
+https://github.com/user-attachments/assets/a88a9146-fd9c-4709-b225-4eba75cfb3d5
 
 ## 📷 Screenshots: 
 
