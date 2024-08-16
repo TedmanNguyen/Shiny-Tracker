@@ -185,13 +185,17 @@ export class HuntCounterComponent implements OnInit, OnDestroy {
       };
     }
   }
+
   toggleFound(huntCard: HuntCard)
   {
+    let corrInstance = this.huntInstances.find(instance => instance.id === huntCard.id)
     huntCard.found = !huntCard.found;
+    corrInstance.found = !corrInstance.found;
     if (huntCard.found) {
       this.launchConfetti();
     }
   }
+
   launchConfetti() {
     confetti({
       particleCount: 100,
