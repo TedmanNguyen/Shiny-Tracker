@@ -6,6 +6,10 @@ Shiny Pokemon are a special variant from the regular Pokemon, featuring a differ
 Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) and [sezavala](https://github.com/sezavala), during our time as a Software Intern w/ CodeDay & Computing Talent Intiative. Our mentor was Principal Software Engineer [Milton Wong](https://www.linkedin.com/in/miltonwong2000/).
 
 ## 🎥 Demo Videos: 
+### Landing Page and Hunt Creator:
+
+https://github.com/user-attachments/assets/3d68fcc0-2253-4828-818a-36fa30b7dc33
+
 ### Infopage:
 
 https://github.com/user-attachments/assets/a88a9146-fd9c-4709-b225-4eba75cfb3d5
