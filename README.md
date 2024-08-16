@@ -8,7 +8,7 @@ Developed in 3 weeks in collaboration with [Cjt101](https://github.com/cjt101) a
 ## 🎥 Demo Videos: 
 ### Landing Page and Hunt Creator:
 
-https://github.com/user-attachments/assets/3d68fcc0-2253-4828-818a-36fa30b7dc33
+https://github.com/user-attachments/assets/4e9d1243-07ae-47d0-b25c-0327fa004888
 
 ### Infopage:
 
